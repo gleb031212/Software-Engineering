@@ -20,3 +20,5 @@ class Driver {
     }
 
 }
+
+const Ticket = require('./ticket.js');
