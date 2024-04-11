@@ -1,19 +1,24 @@
 class Ticket{
 
-    constructor(carPark, timeStart, duration, regNum){}
-
-    getTicketDetails(){
-        return [carPark, timeStart, duration, regNum];
+    constructor(carPark, timeStart, duration, regNum){
+        this.carPark = carPark;
+        this.timeStart = timeStart;
+        this.duration = duration;
+        this.regNum = regNum;
     }
+    getTicketDetails(){
+        return [this.carPark, this.timeStart, this.duration, this.regNum];
+    }
+
     
     getTimeStart(){
-        return timeStart;
+        return this.timeStart;
     }
 
     // checks that the ticket is in date - might not be for correct car park gate
     isValid(){
         const currentTime = new Date();
-        if (currentTime < (timeStart + duration)){
+        if (currentTime.getTime() > (new Date(this.timeStart.getTime() + this.duration).getTime())){
             return false;
         }
         else{

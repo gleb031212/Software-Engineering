@@ -1,19 +1,21 @@
 class Gate{
 
-    constructor(carPark, gateNum){}
+    constructor(carPark, gateNum){
+        this.carPark = carPark;
+        this.gateNum = gateNum;
+    }
 
     getGateNum(){
-        return gateNum;
+        return this.gateNum;
     }
 
     getCarPark(){
-        return carPark;
+        return this.carPark;
     }
 
     checkTicket(ticket){ // ensures that ticket is valid and for the correct car park
-        const Ticket = require('./ticket.js');
         let isValid = ticket.isValid();
-        if (isValid && ticket.getTicketDetails()[0] == carPark){
+        if (isValid && ticket.getTicketDetails()[0] == this.carPark){
             return true; 
         } else {
             return false;
@@ -22,3 +24,4 @@ class Gate{
 }
 
 module.exports = Gate;
+const Ticket = require('./ticket.js');
