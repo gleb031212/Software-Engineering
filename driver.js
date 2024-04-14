@@ -9,16 +9,42 @@ class Driver {
         //}
         // Returns the assigned parking space
     }
-    makePayment(amount) {
+    makePayment(amount) { //bool
         balance = balance + amount;
-    }
-    parkingRequest(space, arriveTime, endTime) {
-        //
     }
     notifyDeparture() {
         
     }
-
+    //Functions from detailed class description
+    getUsername() {
+    
+    }
+    getName() {
+    
+    }
+    getEmail() {
+    
+    }
+    setDetails() {
+    
+    }
+    setUsername() {
+    
+    }
+    setPassword() {
+    
+    }
+    setName() {
+    
+    }
+    setEmail() {
+    
+    }
+    extendTicket() { //bool
+    }
+    register() { //bool
+    
+    }
 }
 
 const Ticket = require('./ticket.js');
