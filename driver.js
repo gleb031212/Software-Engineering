@@ -1,11 +1,15 @@
 class Driver {
     
-    constructor(username, email, password) {
-        let balance = 0;
+    constructor(newUsername, newEmail, newPassword, newName) {
+        this.balance = 0;
+        this.username = newUsername;
+        this.email = newEmail;
+        this.password = newPassword;
+        this.name = newName;
     }
     parkingRequest(destination, arriveTime, duration, vehicleToPark) {
         // if (carPark avaiable from arriveTime to endTime){
-            let newTicket = new Ticket(destination, arriveTime, duration, vehicleReg);
+        let newTicket = new Ticket(destination, arriveTime, duration, vehicleReg);
         //}
         // Returns the assigned parking space
     }
@@ -15,32 +19,39 @@ class Driver {
     notifyDeparture() {
         
     }
+    getBalance() {
+        return this.balance;
+    }
     //Functions from detailed class description
     getUsername() {
-    
+        return this.username;
     }
     getName() {
-    
+        return this.name;
     }
     getEmail() {
-    
+        return this.email;
     }
-    setDetails() {
-    
+    setDetails(newUsername, newEmail, newPassword, newName) {
+        this.username = newUsername;
+        this.email = newEmail;
+        this.password = newPassword;
+        this.name = newName;
     }
-    setUsername() {
-    
+    setUsername(newUsername) {
+        this.username = newUsername;
     }
-    setPassword() {
-    
+    setPassword(newPassword) {
+        this.password = newPassword;
     }
-    setName() {
-    
+    setName(newName) {
+        this.name = newName;
     }
-    setEmail() {
-    
+    setEmail(newEmail) {
+        this.email = newEmail;
     }
     extendTicket() { //bool
+        
     }
     register() { //bool
     
@@ -48,3 +59,8 @@ class Driver {
 }
 
 const Ticket = require('./ticket.js');
+// const testDriver = new Driver("testyDriver123","test@Driver.com","12345","Test Driver");
+// console.log(testDriver.getEmail());
+// console.log(testDriver.getBalance());
+
+module.exports = Driver;

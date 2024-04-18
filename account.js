@@ -1,8 +1,11 @@
+const Driver = require('./driver');
 const fs = require('fs');
 const { resolve } = require('path');
 const readline = require('readline');
 var emailArray = [];
 var usernameArray = [];
+var driverArray = [];
+var driverCount = 0;
 async function loadDatabase() {
     if(fs.existsSync('accounts.csv')) {
     return new Promise(function(resolve,reject){
@@ -17,6 +20,12 @@ async function loadDatabase() {
       inputLines.on('line', function (line) {
         emailArray.push(line.split(',')[3]);
         usernameArray.push(line.split(',')[0]);
+        driverArray[driverCount] = new Driver(line.split(',')[0],line.split(',')[3],line.split(',')[1],line.split(',')[2]);
+
+        // console.log(driverArray[driverCount].getEmail());
+        // console.log(driverArray[driverCount].getBalance());
+
+        driverCount = driverCount + 1;
       });
       
       inputLines.on('close', function () {
@@ -54,6 +63,12 @@ function createAccount(username, password, name, email) {
         });
 
         console.log('Account Successfully Created');
+        driverArray[driverCount] = new Driver(username,email,password,name);
+
+        // console.log(driverArray[driverCount].getEmail());
+        // console.log(driverArray[driverCount].getBalance());
+
+        driverCount = driverCount + 1;
         usernameArray.push(username);
         emailArray.push(email);
     }
