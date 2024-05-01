@@ -1,3 +1,8 @@
+module.exports = {
+    createAccount2: function (username, password, name, email) {
+        createAccount(username, password, name, email);
+    }
+  };
 const Driver = require('./driver');
 const fs = require('fs');
 const { resolve } = require('path');
