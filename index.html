@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form</title>
-    <link href="Index.css" rel="stylesheet">
-    <link href="General.css" rel="stylesheet">
+    <title>UEA Park Hub</title>
+    <link href="public/index.css" rel="stylesheet">
+    <link href="public/general.css" rel="stylesheet">
 </head>
 <body>
-    <div id="top">
-        <img id="uea-logo" src="uea-logo.png" alt="uea-logo">
-        <h1 id="title">UEA PARK</h1>
-    </div>
-    
-    <form id="formData" method="GET" action="/saveCSV">
-        <label for="username">Username<FONT COLOR="#ff0000">*</FONT>:</label><br>
-        <input type="text" id="username" name="username"><br>
-
-        <label for="password">Password<FONT COLOR="#ff0000">*</FONT>:</label><br>
-        <input type="password" id="password" name="password"><br>
-
-        <label for="name">Name<FONT COLOR="#ff0000">*</FONT>:</label><br>
-        <input type="text" id="name" name="name"><br>
-
-        <label for="email">Email<FONT COLOR="#ff0000">*</FONT>:</label><br>
-        <input type="email" id="email" name="email"><br>
-
-        <input id="submitButton" type="submit" value="Submit">
-    </form>
-    <script src="registertest.js"></script>
+    <nav class = "navbar">
+        <div class="navbar-container">
+            <a href="index.html" id="navbar-logo"> <img src="public/uea-logo.png" alt="UEA logo" id="logo"></a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="register.html" class="navbar-link">Register</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks.html" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script src="app.js"></script>
 </body>
 </html>

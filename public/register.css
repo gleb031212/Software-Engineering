@@ -18,20 +18,6 @@ margin-right: 33%;
         #submitButton:active {
         background: #797979; }
         
-#top {
-    display: grid;
- align-items: center; 
- grid-template-columns: 1fr 1fr 1fr;
- column-gap: 5px;
- border-bottom: 4px ridge #1C6EA4;
- margin: 20px;
-}
-#title{
-    text-align: center;
-}     
-#uea-logo{
-    width: 25%;
-}
 input {
     margin-bottom: 3%;
     width: 40%;

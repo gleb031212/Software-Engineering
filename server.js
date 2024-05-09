@@ -7,7 +7,6 @@ const { stringify } = require('querystring');
 
 const app = express();
 
-app.use(express.json());
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './index.html'));
@@ -16,6 +15,10 @@ app.get('/', (req, res) => {
 app.listen(8080, () => {
     console.log('listening on port 8080');    
 });
+
+//middleware and static files
+
+express.static(path.join('public'));
 
 app.get('/saveCSV', (req, res) => {
     // const formData = Object.values(req.body);
