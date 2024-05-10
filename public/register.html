@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Form</title>
-    <link href="register.css" rel="stylesheet">
-    <link href="general.css" rel="stylesheet">
-</head>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
+    <title>Register</title>
     <link href="register.css" rel="stylesheet">
     <link href="general.css" rel="stylesheet">
 </head>
@@ -35,6 +28,7 @@
             </ul>
         </div>
     </nav>
+    
     <form id="formData" method="GET" action="/saveCSV">
         <label for="username">Username<font color="#ff0000">*</font>:</label><br>
         <input type="text" id="username" name="username"><br>
@@ -42,9 +36,15 @@
         <label for="password">Password<font color="#ff0000">*</font>:</label><br>
         <input type="password" id="password" name="password"><br>
 
+        <label for="name">Name<font color="#ff0000">*</font>:</label><br>
+        <input type="text" id="name" name="name"><br>
+
+        <label for="email">Email<font color="#ff0000">*</font>:</label><br>
+        <input type="email" id="email" name="email"><br>
+
         <input id="submitButton" type="submit" value="Submit">
     </form>
-    <script src="/registertest.js"></script>
     <script src="/app.js"></script>
+
 </body>
 </html>

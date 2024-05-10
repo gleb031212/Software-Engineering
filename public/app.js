@@ -1,3 +1,5 @@
+//Hamburger Menu
+
 const menu = document.querySelector("#mobile-menu")
 const menuLinks = document.querySelector(".navbar-menu")
 
@@ -21,3 +23,9 @@ function openTab(tabName) {
     document.getElementById(tabName).classList.add("active-tab");
 
 }
+
+//Scroll Animations
+
+const navigation = document.querySelector(".primary-navigation");
+const navigationHeight = navigation.offsetHeight;
+document.documentElement.style.setProperty("--scroll-padding", navigationHeight + "px");
