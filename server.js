@@ -27,6 +27,10 @@ app.get('/carparks', (req, res) => {
     res.sendFile(path.join(__dirname, './public/carparks.html'));
 });
 
+app.get('/reserve', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/reserve.html'));
+});
+
 app.listen(8080, () => {
     console.log('listening on port 8080');    
 });

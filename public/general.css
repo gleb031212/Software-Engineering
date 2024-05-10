@@ -12,6 +12,12 @@ html{
 
 }
 
+.background-image {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 
 /*========================NAVBAR===========================*/
 
