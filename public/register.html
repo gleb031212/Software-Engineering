@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form</title>
+    <link href="register.css" rel="stylesheet">
+    <link href="general.css" rel="stylesheet">
+</head>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link href="register.css" rel="stylesheet">
+    <link href="general.css" rel="stylesheet">
+</head>
+<body>
+    <nav class = "navbar">
+        <div class="navbar-container">
+            <a href="index.html" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="register.html" class="navbar-link">Register</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks.html" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <form id="formData" method="GET" action="/saveCSV">
+        <label for="username">Username<font color="#ff0000">*</font>:</label><br>
+        <input type="text" id="username" name="username"><br>
+
+        <label for="password">Password<font color="#ff0000">*</font>:</label><br>
+        <input type="password" id="password" name="password"><br>
+
+        <input id="submitButton" type="submit" value="Submit">
+    </form>
+    <script src="/registertest.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-const Account = require('./account.js');
+const Account = require('./public/account.js');
 //https://stackoverflow.com/questions/5797852/in-node-js-how-do-i-include-functions-from-my-other-files
 const express = require('express');
 const path = require('path');
@@ -7,9 +7,24 @@ const { stringify } = require('querystring');
 
 const app = express();
 
+app.use(express.json());
+app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './index.html'));
+    console.log('index.html')
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/login.html'));
+});
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/register.html'));
+});
+
+app.get('/carparks', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/carparks.html'));
 });
 
 app.listen(8080, () => {
