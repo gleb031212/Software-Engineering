@@ -2,10 +2,10 @@
 <html>
 <head>
     <title>Register</title>
-    <link href="register.css" rel="stylesheet">
+    <link href="forms.css" rel="stylesheet">
     <link href="general.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body class ="background-image"></body>
 <body>
     <nav class = "navbar">
         <div class="navbar-container">
@@ -28,22 +28,39 @@
             </ul>
         </div>
     </nav>
-    
-    <form id="formData" method="GET" action="/saveCSV">
-        <label for="username">Username<font color="#ff0000">*</font>:</label><br>
-        <input type="text" id="username" name="username"><br>
+    <div id="form"> 
+        <div class="form-container">
+            <form class="register-form" method="GET" action="/saveCSV">
+                <div class="form-header">
+                    <h1>Register</h1>
+                    <p>Please enter your details below</p>
+                </div>
 
-        <label for="password">Password<font color="#ff0000">*</font>:</label><br>
-        <input type="password" id="password" name="password"><br>
+                <div class="form-item">
+                    <span class="form-icon material-symbols-outlined">person</span>
+                    <input type="text" id="username" name="username" placeholder="Enter Username" required autofocus><br>
+                </div>
 
-        <label for="name">Name<font color="#ff0000">*</font>:</label><br>
-        <input type="text" id="name" name="name"><br>
+                <div class="form-item">
+                    <span class="form-icon material-symbols-outlined">lock</span>
+                    <input type="password" id="password" name="password" placeholder="Enter Password"><br>
+                </div>
 
-        <label for="email">Email<font color="#ff0000">*</font>:</label><br>
-        <input type="email" id="email" name="email"><br>
+                <div class="form-item">
+                    <span class="form-icon material-symbols-outlined">id_card</span>
+                    <input type="text" id="name" name="name" placeholder="Enter your Name"><br>
+                </div>
 
-        <input id="submitButton" type="submit" value="Submit">
-    </form>
+                <div class="form-item">
+                    <span class="form-icon material-symbols-outlined">mail</span>
+                    <input type="email" id="email" name="email" placeholder="Enter your Email"><br>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+   
     <script src="/app.js"></script>
 
 </body>
