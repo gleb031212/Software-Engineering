@@ -1,18 +1,29 @@
+import carPark from './carPark.js';
+
+const carParks = {
+    "Blackdale Car Park": new carPark(1, "Blackdale Car Park", 60, 60, []),
+    "N&N Hospital": new carPark(2, "N&N Hospital", 600, 600, []),
+    "UEA Main Car Park": new carPark(3, "UEA Main Car Park", 300, 300, []),
+    "SU Car Park": new carPark(4, "SU Car Park", 20, 20, []),
+    "Ziggurat Car Park": new carPark(5, "Ziggurat Car Park", 80, 80, []),
+    "Chancellors Drive Car Park": new carPark(6, "Chancellors Drive Car Park", 50, 50, [])
+};
+
 document.getElementById('location-ms').addEventListener('click', function() {
-    console.log("Closest Car Park: Blackdale Car Park");
+    return carParks['Blackdale Car Park'];
 });
 document.getElementById('location-col').addEventListener('click', function() {
-    console.log("Closest Car Park: N&N Hospital");
+    return carParks['N&N Hospital'];
 });
 document.getElementById('location-sp').addEventListener('click', function() {
-    console.log("Closest Car Park: UEA Main Car Park");
+    return carParks['UEA Main Car Park'];
 });
 document.getElementById('location-su').addEventListener('click', function() {
-    console.log("Closest Car Park: SU Car Park");
+    return carParks['SU Car Park'];
 });
 document.getElementById('location-tw').addEventListener('click', function() {
-    console.log("Closest Car Park: Ziggurat Car Park");
+    return carParks['Ziggurat Car Park'];
 });
 document.getElementById('location-cd').addEventListener('click', function() {
-    console.log("Closest Car Park: Chancellors Drive Car Park");
+    return carParks['Chancellors Drive Car Park'];
 });

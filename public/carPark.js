@@ -1,7 +1,8 @@
 class carPark{
 
-    constructor(id, totalSpaces, availableSpaces, vehicles){
+    constructor(id, name, totalSpaces, availableSpaces, vehicles){
         this.carParkID = id;
+        this.name = name;
         this.totalSpaces = totalSpaces;
         this.availableSpaces = availableSpaces;
         this.vehicles = vehicles;
@@ -28,6 +29,10 @@ class carPark{
         return this.vehicles;
     }
 
+    getName(){
+        return this.name;
+    }
+
     setTotalSpaces(totalSpaces){
         this.totalSpaces = totalSpaces;
     }
@@ -47,3 +52,4 @@ class carPark{
     }
 }
 
+export default carPark;
