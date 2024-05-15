@@ -68,60 +68,6 @@
     align-items: center;
 }
 
-.card{
-    height: 500px;
-    width: 350px;
-    margin: 50px;
-    box-shadow: 5px 5px 20px black;
-    overflow: hidden;
-}
-
-.card-img{
-    height: 500px;
-    width: 350px;
-    border-radius: 3px;
-}
-
-.card-text{
-    height: 70px;
-    width: 350px;
-    padding: 6px;
-    box-sizing: border-box;
-    position:absolute;
-    border-color: black;
-    background: rgb(27,27,27,.5);
-    bottom: -725px !important;
-    color: white;
-    transition: all ease 0.5s;
-}
-
-.card-text h1 {
-    margin: 10px;
-    font-size: 30px;
-}
-
-.card-text p {
-    margin: 10px;
-    font-size: 20px;
-    visibility: hidden;
-    opacity: 0;
-}
-
-.card:hover{
-    cursor: pointer;
-}
-
-.card:hover .card-text{
-    height: 220px;
-    bottom: 240px;
-    background: rgb(27,27,27,.5);
-}
-
-.card:hover .card-text p{
-    visibility: visible;
-    opacity: 1;
-}
-
 @media only screen and (max-width: 1407px) {
     #card-text3{
         bottom: -1325px !important;
