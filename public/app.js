@@ -29,3 +29,10 @@ function openTab(tabName) {
 const navigation = document.querySelector(".primary-navigation");
 const navigationHeight = navigation.offsetHeight;
 document.documentElement.style.setProperty("--scroll-padding", navigationHeight + "px");
+
+//Popups
+
+function togglePopup(id){
+    document.getElementById(id).classList.toggle("active");
+    return id;
+}

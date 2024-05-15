@@ -1,0 +1,214 @@
+
+<!--1.1) graphically monitor the overall status of parking space usage
+    1.2) monitor the status in numbers (e.g., total spaces, available spaces, occupied
+    spaces, reserved spaces, etc.)
+    1.3) add/remove parking lots    
+    1.4) block parking spaces (e.g., for road repair) and release them afterwards
+    1.5) reserve certain spaces for special events on campus
+    1.6) receive parking requests and approve/reject them
+    1.7) assign a specific location to a parking request or allow the PMS to assign the
+    closest location available to the requested destination automatically, when approving
+    requests
+    1.8) change the assigned locations, if needed (e.g., unexpected pre-occupation reports
+    from drivers, etc.)
+    1.9) manage driver user accounts (i.e., remove/ban users)
+    1.10) send/receive text messages to/from drivers for communication -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>UEA Park</title>
+    <link href="admin.css" rel="stylesheet">
+    <link href="general.css" rel="stylesheet">
+</head>
+<body class ="background-image"></body>
+<body>
+    <nav class = "navbar">
+        <div class="navbar-container">
+            <a href="index.html" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="register.html" class="navbar-link">Register</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks.html" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div id="admin-home">
+        <div class="admin-menu">
+            <div class="admin-menu-title">
+                <h1>Admin Menu</h1>
+            </div>
+            <div class="admin-feature">
+                <div class="admin-card-text" onclick="togglePopup('MS-popup')">
+                    <a>Manage Spaces</a>
+                </div>
+            </div>
+            <div class="admin-feature">
+                <div class="admin-card-text" onclick="togglePopup('ML-popup')">
+                    <a>Manage Parking Lots</a>
+                </div>
+            </div>
+            <div class="admin-feature">
+                 <div class="admin-card-text" onclick="togglePopup('MR-popup')">
+                    <a>Manage Requests</a>
+                </div>
+            </div>
+            <div class="admin-feature">
+                <div class="admin-card-text" onclick="togglePopup('MA-popup')">
+                    <a>Manage Accounts</a>
+                </div>
+            </div>
+            <div class="admin-feature">
+                <div class="admin-card-text">
+                    <a>User Communication</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="MS-popup">
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-close-btn" onclick="togglePopup('MS-popup')">&times;</div>
+                <div class="popup-title">
+                    <h2>Choose a Parking Lot</h2>
+                </div>
+                <div class="admin-feature">
+                    <div class="admin-card-text">
+                        <a>University Car Park</a>
+                    </div>
+                </div>
+                <div class="admin-feature">
+                    <div class="admin-card-text">
+                        <a>Thomas Paine Car Park</a>
+                    </div>
+                </div>
+                <div class="admin-feature">
+                    <div class="admin-card-text">
+                        <a>Sainsburys Center Car Park</a>
+                    </div>
+                </div>
+                <div class="admin-feature">
+                    <div class="admin-card-text">
+                        <a>Blackdale Car Park</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="popup" id="ML-popup">
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-close-btn" onclick="togglePopup('ML-popup')">&times;</div>
+                <div class="popup-title">
+                    <h2>Latest Requests</h2>
+                </div>
+                <div class="req-table-container">
+                    <table class="req-table" border="1">
+                        <thead>
+                            <tr>
+                                <th>Car Park</th>
+                                <th>Total Spaces</th>
+                                <th>Available Spaces</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>University Car Park</td>
+                                <td>500</td>
+                                <td>346</td>
+                                <td><button>Remove</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="MR-popup">
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-close-btn" onclick="togglePopup('MR-popup')">&times;</div>
+                <div class="popup-title">
+                    <h2>Latest Requests</h2>
+                </div>
+                <div class="req-table-container">
+                    <table class="req-table" border="1">
+                        <thead>
+                            <tr>
+                                <th>Req Time</th>
+                                <th>Car Park</th>
+                                <th>Username</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>13:00</td>
+                                <td>University Car Park</td>
+                                <td>harrym</td>
+                                <td>16:00</td>
+                                <td>18:00</td>
+                                <td><button>Approve</button><button>Deny</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="MA-popup">
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-close-btn" onclick="togglePopup('MA-popup')">&times;</div>
+                <div class="popup-title">
+                    <h2>Account List</h2>
+                </div>
+                <div class="req-table-container">
+                    <table class="req-table" border="1">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Password</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>harrym</td>
+                                <td>beededd</td>
+                                <td>Harry McDonagh</td>
+                                <td>harrymcdonagh82@gmail.com</td>
+                                <td><button>Remove</button><button>Ban</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
