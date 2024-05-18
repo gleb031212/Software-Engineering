@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Choose Location</title>
-    <link href="reserve.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>UEA Park</title>
+    <link href="index.css" rel="stylesheet">
     <link href="general.css" rel="stylesheet">
+    <link href="SlotsTest.css" rel="stylesheet">
 </head>
 <body class ="background-image"></body>
 <body>
     <nav class = "navbar">
         <div class="navbar-container">
-            <a href="index.html" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
+            <a href="#home" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
             <div class="navbar-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -28,30 +31,30 @@
             </ul>
         </div>
     </nav>
-    <script src="/app.js"></script>
 
-    <h1 class = "page-header">Select Your Approximate Location</h1>
-    <div id="main">
-        <div class = "rectangular-card" id = "location-ms">
-            <h1>Medical Centre</h1>
+    <div id="home">
+        <div id="reserve">
+        <div class="dropdown">
+    <select id="destinations">
+        <option value="Medical">Medical Centre</option>
+        <option value="Colney">Colney</option>
+        <option value="Sports" >Sportspark</option>
+        <option value="SU">The Hive / SU</option>
+        <option value="Wall" >Teaching Wall</option>
+        <option value="Drive" >Chancellor's Drive</option>
+
+    </select>
+          
+          <input type="date" id="bookdate" min="" max="" />
+          <input type="time" id="booktime" min="" max=""/>
         </div>
-        <div class = "rectangular-card" id = "location-col">
-            <h1>Colney</h1>
-        </div>
-        <div class = "rectangular-card" id = "location-sp">
-            <h1>Sportspark</h1>
-        </div>
-        <div class = "rectangular-card" id = "location-su">
-            <h1>The Hive / SU</h1>
-        </div>
-        <div class = "rectangular-card" id = "location-tw">
-            <h1>Teaching Wall</h1>
-        </div>
-        <div class = "rectangular-card" id = "location-cd">
-            <h1>Chancellor's Drive</h1>
-        </div>
+          <p id="submit"><div class = "rectangular-card" >
+            <h1>Submit</h1>
+        </div></p>
     </div>
-
+    </div>
+    
+    
+    <script src="/app.js"></script>
 </body>
-<script type="module" src="reserve.js"></script>
 </html>
