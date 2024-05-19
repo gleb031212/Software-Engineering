@@ -30,7 +30,7 @@
     </nav>
     <div id="form"> 
         <div class="form-container">
-            <form class="login-form" id="loginForm">
+            <form class="login-form" id="loginForm" method="GET" action="/login">
                 <div class="form-header">
                     <h1>Login</h1>
                     <p>Please enter your details below</p>
@@ -46,13 +46,14 @@
                     <input type="password" id="password" name="password" placeholder="Enter Password"><br>
                 </div>
 
-                <button type="button" onclick="login()">Sign In</button>
+                <button type="submit">Sign In</button>
             </form>
             <div id="message"></div>
         </div>
     </div>
     <script src="/accounts.js"></script>
     <script src="/app.js"></script>
+    <script src="/login.js"></script>
 
 </body>
 </html>
