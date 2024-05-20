@@ -1,3 +1,8 @@
+module.exports = {
+    login2: function (username, password) {
+        login(username, password);
+    }
+  };
 const fs = require('fs');
 
 function login(username, password) {
@@ -24,5 +29,3 @@ function login(username, password) {
        console.log('Invalid username or password.');
    });
 }
-
-module.exports = login;
