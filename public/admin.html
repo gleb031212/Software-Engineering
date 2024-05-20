@@ -21,6 +21,7 @@
     <title>UEA Park</title>
     <link href="admin.css" rel="stylesheet">
     <link href="general.css" rel="stylesheet">
+    <link rel="stylesheet" href="chat.css">
 </head>
 <body class ="background-image"></body>
 <body>
@@ -72,7 +73,7 @@
                 </div>
             </div>
             <div class="admin-feature">
-                <div class="admin-card-text">
+                <div class="admin-card-text" onclick="togglePopup('UC-popup')">
                     <a>User Communication</a>
                 </div>
             </div>
@@ -86,22 +87,22 @@
                 <div class="popup-title">
                     <h2>Choose a Parking Lot</h2>
                 </div>
-                <div class="admin-feature">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
                     <div class="admin-card-text">
                         <a>University Car Park</a>
                     </div>
                 </div>
-                <div class="admin-feature">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
                     <div class="admin-card-text">
                         <a>Thomas Paine Car Park</a>
                     </div>
                 </div>
-                <div class="admin-feature">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
                     <div class="admin-card-text">
                         <a>Sainsburys Center Car Park</a>
                     </div>
                 </div>
-                <div class="admin-feature">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
                     <div class="admin-card-text">
                         <a>Blackdale Car Park</a>
                     </div>
@@ -116,6 +117,7 @@
                 <div class="popup-close-btn" onclick="togglePopup('ML-popup')">&times;</div>
                 <div class="popup-title">
                     <h2>Latest Requests</h2>
+                    <p>Add a Parking Lot <button id="add-btn" onclick = "togglePopup('add-pl-popup')">Add</button></p>
                 </div>
                 <div class="req-table-container">
                     <table class="req-table" border="1">
@@ -130,6 +132,24 @@
                         <tbody>
                             <tr>
                                 <td>University Car Park</td>
+                                <td>500</td>
+                                <td>346</td>
+                                <td><button>Remove</button></td>
+                            </tr>
+                            <tr>
+                                <td>Thomas Paine Car Park</td>
+                                <td>500</td>
+                                <td>346</td>
+                                <td><button>Remove</button></td>
+                            </tr>
+                            <tr>
+                                <td>Sainsburys Centre Car Park</td>
+                                <td>500</td>
+                                <td>346</td>
+                                <td><button>Remove</button></td>
+                            </tr>
+                            <tr>
+                                <td>Blackdale Car Park</td>
                                 <td>500</td>
                                 <td>346</td>
                                 <td><button>Remove</button></td>
@@ -209,6 +229,55 @@
         </div>
     </div>
 
+    <div class="popup" id="UC-popup">
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-close-btn" onclick="togglePopup('UC-popup')">&times;</div>
+                <div class="popup-title">
+                    <h2>User Communication</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="add-pl-popup">
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-close-btn" onclick="togglePopup('add-pl-popup')">&times;</div>
+                <div class="popup-title">
+                    <h2>Add new Car Park</h2>
+                    <p>Enter car park details below</p>
+                </div>
+                <div class="popup-form-container">
+                    <form class="popup-form">
+                        <div class="popup-form-item">
+                            <label for="new-pl-name">Car Park Name</label>
+                            <input type="text" id="new-pl-name" placeholder="Enter Name of Car Park" required>
+                        </div>
+                        <div class="popup-form-item">
+                            <label for="new-pl-tspaces">Total Spaces</label>
+                            <input type="text" id="-new-pl-tspaces" placeholder="Total Spaces" required>
+                        </div>
+                        
+                        <button type="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="MSL-popup">
+        <div class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-close-btn" onclick="togglePopup('MSL-popup')">&times;</div>
+                <div class="popup-title">
+                    <h2>Spaces</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="/app.js"></script>
+
 </body>
 </html>

@@ -126,7 +126,7 @@ body{
 }
 
 .popup-title{
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
 }
 
 #MR-popup .popup-content{
@@ -138,6 +138,10 @@ body{
 }
 
 #ML-popup .popup-content{
+    width: 800px;
+}
+
+#UC-popup .popup-content{
     width: 800px;
 }
 
@@ -160,12 +164,61 @@ body{
     padding: 10px;
 }
 
-.req-table button{
-    padding: 10px;
-    background: #182ef0;
+.popup button{
+    background-color: #007BFF;
     color: white;
-    border-radius: 20px;
-    width: 80px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+.popup button:hover{
+    background-color: #0056b3;
+}
+
+#add-btn{
+    padding: 5px;
+    width: 50px;
+}
+
+.popup-title h2 {
+    margin: 0;
+}
+
+.popup-title p {
+    margin: 5px 0 20px;
+}
+
+.popup-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-form {
+    width: 100%;
+}
+
+.popup-form-item {
+    margin-bottom: 15px;
+    text-align: left;
+    width: 100%;
+}
+
+.popup-form-item label {
+    display: block;
+    margin-bottom: 2px;
+}
+
+.popup-form-item input {
+    width: calc(100% - 10px);
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #000000;
+    border-radius: 4px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -182,7 +235,7 @@ body{
         padding: 0px;
     }
 
-    .req-table button{
+    button{
         padding: 0px;
         height: 30px;
         width: 50px;

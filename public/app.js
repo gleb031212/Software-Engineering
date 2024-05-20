@@ -36,3 +36,27 @@ function togglePopup(id){
     document.getElementById(id).classList.toggle("active");
     return id;
 }
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('new-pl-form');
+    const addButton = document.getElementById('addButton');
+    const formInputs = form.querySelectorAll('input[required]');
+
+    // Function to check form validity
+    const checkFormValidity = () => {
+        let isValid = true;
+        formInputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+            }
+        });
+        addButton.disabled = !isValid;
+    };
+
+    // Add event listeners to each input to check validity on input
+    formInputs.forEach(input => {
+        input.addEventListener('input', checkFormValidity);
+    });
+
+    // Initial check in case the form is pre-filled
+    checkFormValidity()
+});
