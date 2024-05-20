@@ -7,6 +7,18 @@ const { stringify } = require('querystring');
 
 const app = express();
 
+var mysql = require('mysql2');
+var connection = mysql.createConnection({
+host: "localhost",
+user: "root",
+password: "softeng",
+database: "parking_db"
+});
+connection.connect(function(err) {
+if (err) throw err;
+console.log("Connected Successfully!");
+});
+
 app.use(express.json());
 app.use(express.static("public"));
 
