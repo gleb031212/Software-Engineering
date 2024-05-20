@@ -9,21 +9,21 @@ const carParks = {
     "Chancellors Drive Car Park": new carPark(6, "Chancellors Drive Car Park", 50, 50, [])
 };
 
-document.getElementById('location-ms').addEventListener('click', function() {
-    return carParks['Blackdale Car Park'];
-});
-document.getElementById('location-col').addEventListener('click', function() {
-    return carParks['N&N Hospital'];
-});
-document.getElementById('location-sp').addEventListener('click', function() {
-    return carParks['UEA Main Car Park'];
-});
-document.getElementById('location-su').addEventListener('click', function() {
-    return carParks['SU Car Park'];
-});
-document.getElementById('location-tw').addEventListener('click', function() {
-    return carParks['Ziggurat Car Park'];
-});
-document.getElementById('location-cd').addEventListener('click', function() {
-    return carParks['Chancellors Drive Car Park'];
-});
+// document.getElementById('location-ms').addEventListener('click', function() {
+//     return carParks['Blackdale Car Park'];
+// });
+// document.getElementById('location-col').addEventListener('click', function() {
+//     return carParks['N&N Hospital'];
+// });
+// document.getElementById('location-sp').addEventListener('click', function() {
+//     return carParks['UEA Main Car Park'];
+// });
+// document.getElementById('location-su').addEventListener('click', function() {
+//     return carParks['SU Car Park'];
+// });
+// document.getElementById('location-tw').addEventListener('click', function() {
+//     return carParks['Ziggurat Car Park'];
+// });
+// document.getElementById('location-cd').addEventListener('click', function() {
+//     return carParks['Chancellors Drive Car Park'];
+// });

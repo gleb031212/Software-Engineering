@@ -1,5 +1,7 @@
 //Hamburger Menu
 
+//import carPark from "./carPark";
+
 const menu = document.querySelector("#mobile-menu")
 const menuLinks = document.querySelector(".navbar-menu")
 
@@ -36,6 +38,25 @@ function togglePopup(id){
     document.getElementById(id).classList.toggle("active");
     return id;
 }
+///reserve
+function makeReserve(){
+    carpark = document.getElementById("destinations").value;
+    togglePopup('booking');
+    document.getElementById("here").textContent = carpark;
+    if (carpark == "Medical Centre") {
+        
+        var img = document.createElement("img");
+        img.src = "/medical.png";
+        var src = document.getElementById("pichere")
+        src.appendChild(img);
+    } else if (carpark == "Colney"){
+        var img = document.createElement("img");
+        img.src = "/colney.png";
+        var src = document.getElementById("pichere")
+        src.appendChild(img);
+    }
+
+}
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.getElementById('new-pl-form');
     const addButton = document.getElementById('addButton');
@@ -59,4 +80,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Initial check in case the form is pre-filled
     checkFormValidity()
+
+    
 });
