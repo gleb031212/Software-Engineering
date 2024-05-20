@@ -1,4 +1,5 @@
 const Account = require('./public/account.js');
+const Login = require('./public/login.js');
 //https://stackoverflow.com/questions/5797852/in-node-js-how-do-i-include-functions-from-my-other-files
 const express = require('express');
 const path = require('path');
@@ -49,4 +50,14 @@ app.get('/saveCSV', (req, res) => {
     res.send(password);
 
     Account.createAccount2(username,password,name,email);
+});
+
+app.get('/login2', (req, res) => {
+
+    const username = req.query.username;
+    const password = req.query.password;
+
+    Login.login2(username,password);
+
+    res.send(password);
 });
