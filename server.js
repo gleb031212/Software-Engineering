@@ -31,6 +31,11 @@ app.get('/reserve', (req, res) => {
     res.sendFile(path.join(__dirname, './public/reserve.html'));
 });
 
+//DELETE BEFORE SUBMISSION
+app.get('/checkout', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/checkout.html'));
+});
+
 app.listen(8080, () => {
     console.log('Server listening on port http://localhost:8080/ \n');    
 });

@@ -146,10 +146,12 @@ html{
     display: inline-flex;
     height: 100px;
     width: 300px;
-    margin: 50px;
+    margin: 10px auto ;
     box-shadow: 5px 5px 20px black;
     overflow: hidden;
     cursor: pointer;
+    justify-content: center; /* Add this line */
+    align-items: center; /* Add this line */
 }
 
 .rectangular-card h1{
@@ -160,15 +162,29 @@ html{
     width: 100%;
     background: rgba(0,0,0,0.5);
     transition: all ease 0.5s;
+    text-align: center;
+    font-size: calc(3rem+1vw);
 }
 
 .rectangular-card h1:hover{
     background: rgba(0,0,0,0.7);
 }
 
-.rectangular-card h1 a{
+a .rectangular-card h1{
     color: #fff;
     text-decoration: none;
+}
+
+@media (max-width: 1100px) {
+    .rectangular-card{
+        width: 340px;
+    }
+}
+
+@media (max-width: 700px) {
+    .rectangular-card{
+        width: 600px;
+    }
 }
 
 /*==================NAVBAR MOBILE VIEW====================*/
@@ -261,3 +277,4 @@ html{
 }
 
 /*=========================================================*/
+
