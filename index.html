@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>UEA Park</title>
+    <link href="index.css" rel="stylesheet">
+    <link href="general.css" rel="stylesheet">
+</head>
+<body class ="background-image"></body>
+<body>
+    <nav class = "navbar">
+        <div class="navbar-container">
+            <a href="#home" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="register.html" class="navbar-link">Register</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks.html" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="home">
+        <div class="home-container">
+            <div id="home-text">
+                <h1>"Simplifying your campus commute"</h1>
+                <p>Lets get started...</p>
+            </div>
+            <a href="#features" class="arrow"></a>
+        </div>
+    </div>
+    <div id="features">
+        <h1>Options</h1>
+        <div class="features-container">
+            <div class="card">
+                <img src="planahead.jpg" alt="Plan Ahead" class="card-img">
+                <div class="card-text" id="card-text1">
+                    <h1>Plan Ahead</h1>
+                    <p>View and book your spaces ahead of time, to save you the hassle!</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="carpark.jpg" alt="Convenience" class="card-img">
+                <div class="card-text" id="card-text2">
+                    <h1>Convenience</h1>
+                    <p>Select a space, a time, and pay! All Online, so no need for ticket machines! </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="managebooking.jpg" alt="Bookings" class="card-img">
+                <div class="card-text" id="card-text3">
+                    <h1>Manage Booking</h1>
+                    <p><span>Ready for anything!</span> Extend, Cancel or Change your booking at anytime!</p>
+                </div>
+            </div>
+            <div class="card" id="notify">
+                <img src="notify.png" alt="Notify" class="card-img" id = "notifyimg">
+                <div class="card-text" id="card-text4">
+                    <h1>Notify</h1>
+                    <p><span>Arrived?</span> Left? Let us know!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/app.js"></script>
+    <script src="/index.js"></script>
+</body>
+</html>
