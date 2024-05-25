@@ -108,7 +108,7 @@ html{
     position:absolute;
     border-color: black;
     background: rgb(27,27,27,.5);
-    bottom: -725px !important;
+    bottom: -707px !important;
     color: white;
     transition: all ease 0.5s;
 }

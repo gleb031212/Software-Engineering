@@ -68,9 +68,18 @@
     align-items: center;
 }
 
+#notifyimg {
+    height: 400px;
+    width: 350px;
+}
+
 @media only screen and (max-width: 1407px) {
     #card-text3{
-        bottom: -1325px !important;
+        bottom: -1307px !important;
+    }
+
+    #card-text4{
+        bottom: -1308px !important;
     }
 }
 
@@ -94,5 +103,9 @@
 
     #card-text3 {
         bottom: -1775px !important;
+    }
+
+    #card-text4 {
+        bottom: -2315px !important;
     }
 }
