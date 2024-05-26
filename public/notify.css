@@ -44,12 +44,12 @@
     text-align: center;
 }
 
-#notify-arrival {
+#notify-departure {
     background-color: rgb(255, 69, 69);   
     color: rgba(0, 0, 0, 0.874);
 }
 
-#notify-departure {
+#notify-arrival {
     background-color: #77ff65;
     color: rgba(0, 0, 0, 0.874);
 }
