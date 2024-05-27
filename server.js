@@ -19,6 +19,16 @@ if (err) throw err;
 console.log("Connected Successfully!");
 });
 
+// var testquery2 = "DELETE FROM users WHERE UserName='Benjamaxo'";
+// connection.query(testquery2, function (err, usersResponse){
+//     if (err) throw err;
+//     if (usersResponse.length > 0) {
+//         console.log(usersResponse);
+//     }
+// })
+
+
+
 app.use(express.json());
 app.use(express.static("public"));
 
