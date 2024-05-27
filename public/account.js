@@ -11,6 +11,19 @@ var emailArray = [];
 var usernameArray = [];
 var driverArray = [];
 var driverCount = 0;
+
+var mysql = require('mysql2');
+var connection = mysql.createConnection({
+host: "localhost",
+user: "root",
+password: "softeng",
+database: "parking_db"
+});
+connection.connect(function(err) {
+if (err) throw err;
+console.log("Connected Successfully! - account.js");
+});
+
 async function loadDatabase() {
     if(fs.existsSync('accounts.csv')) {
     return new Promise(function(resolve,reject){
@@ -46,6 +59,13 @@ async function asyncStartProgram() {
     createAccount("Benjamaxo","passwordsarecool","Ben Stannard","bpstannard@gmail.com");
     createAccount("Benjamaxo","passwordsarecool","Ben Stannard","bpstannard@gmail.com");
     createAccount("SamRaider","cybersecisbad","Sam Pyle","samraider69@gmail.com");
+    var testquery = "SELECT * FROM users";
+    connection.query(testquery, function (err, usersResponse){
+        if (err) throw err;
+        if (usersResponse.length > 0) {
+            console.log(usersResponse);
+        }
+    })
 }
 
 function createAccount(username, password, name, email) {
@@ -78,31 +98,21 @@ function createAccount(username, password, name, email) {
         emailArray.push(email);
     }
 
-};
-
-function login(username, password) {
-    console.log('Invalid username or password.')
-    fs.readFile('accounts.csv', 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading file:', err);
-            return;
-        }
-        
-        const rows = data.split('\n');
-        
-        for (let i = 0; i < rows.length; i++) {
-            const columns = rows[i].split(',');
-            const storedUsername = columns[0];
-            const storedPassword = columns[1];
-            
-            if (storedUsername === username && storedPassword === password) {
-                console.log('Login successful!');
-                return;
+    var testquery1 = "INSERT INTO users (Name,UserName,Password,Email,IsAdmin) VALUES ('"+ username +"', '"+ name +"', '"+ password +"', '"+ email +"', 0)";
+    connection.query(testquery1, function (err, usersResponse){            
+        if (err){
+            if(err.errno==1062) { //1062 is the error code for duplicate UNIQUE entry.
+                console.log("Duplicate!");
             }
+            else{
+                console.log(err);
+            }
+        } 
+
+        else if (usersResponse.length > 0) {
+            console.log(usersResponse);
         }
-        
-        console.log('Invalid username or password.');
-    });
-}
+    })
+};
 
 asyncStartProgram();
