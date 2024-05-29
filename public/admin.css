@@ -91,6 +91,19 @@ body{
     width: 50px;
 }
 
+#spaces-table {
+    border-collapse: collapse;
+}
+
+#spaces-table .red {
+    background-color: red;
+    color: white;
+}
+#spaces-table .white {
+    background-color: white;
+    color: black;
+}
+
 @media only screen and (max-width: 768px) {
 
     button{

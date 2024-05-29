@@ -18,20 +18,23 @@ class carPark{
         }
     }
     
-    consoleVisualise(){
+    generateArray() {
+        const result = [];
         var col = "Col   ";
         for (let j = 1; j <= this.spacesY; j++) {
             col += j;
         }
         console.log(col);
+    
         for (let i = 1; i <= this.spacesX; i++) {
-            var row = "Row ";
-            row += i+ " ";
+            var row = [];
             for (let j = 1; j <= this.spacesY; j++) {
-                row += this.spaceGrid[i][j].currentStatus;
+                row.push(this.spaceGrid[i][j].currentStatus);
             }
-            console.log(row);
+            result.push(row);
         }
+        console.log(result);
+        return result;
     }
 
     getCarParkID(){
@@ -77,5 +80,5 @@ test.setSpaceStatus(6,4,1);
 test.setSpaceStatus(8,2,1);
 test.setSpaceStatus(3,6,2);
 
-console.log("Visual:");
-test.consoleVisualise();
+
+const tableData = test.generateArray();
