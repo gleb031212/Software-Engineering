@@ -1,3 +1,11 @@
+// Chat Button
+
+document.getElementsByClassName('chat-button')[0].addEventListener('click', function() {
+    console.log('clicked');
+    window.location.href = '/chat';
+    }
+);
+
 //Hamburger Menu
 
 //import carPark from "./carPark";

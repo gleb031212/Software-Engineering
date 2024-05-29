@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>UEA Park</title>
+    <link href="chat.css" rel="stylesheet">
+    <link href="general.css" rel="stylesheet">
+</head>
+<body>
+    <div class ="background-image"></body>
+    <nav class = "navbar">
+        <div class="navbar-container">
+            <a href="index.html" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="register.html" class="navbar-link">Register</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks.html" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section id = "chat-box">
+        <div>
+            <h1 class = "page-header">Admin Chat</h1>
+        </div>
+        <!-- Chat box -->
+        <div id = "chat-messages">
+        </div>
+        <!-- Message form -->
+        <div id = "chat-form">
+            <input type = "text" id = "message" placeholder = "Enter your message">
+            <button id = "send-button"><img src = "send.png"></button>
+        </div>
+    </section>
+</body>
+<div id = "different-backgroud"></div>
+<script src="/app.js"></script>
+<script src="/chat.js"></script>
+</html>
