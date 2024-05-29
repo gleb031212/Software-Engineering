@@ -2,6 +2,24 @@
 
 //import carPark from "./carPark";
 
+
+
+var mysql = require('mysql2');
+var connection = mysql.createConnection({
+host: "localhost",
+user: "root",
+password: "softeng",
+database: "parking_db"
+});
+connection.connect(function(err) {
+if (err) throw err;
+console.log("Connected Successfully! - login.js");
+});
+
+
+
+
+
 const menu = document.querySelector("#mobile-menu")
 const menuLinks = document.querySelector(".navbar-menu")
 
@@ -31,6 +49,25 @@ function togglePopup(id){
     return id;
 }
 ///reserve
+
+function login(username, password) {
+    var testquery1 = "SELECT * FROM users WHERE UserName LIKE '"+username+"' AND Password LIKE '"+password+"'";
+    connection.query(testquery1, function (err, returnlog){            
+        if (err){
+            console.log("Invalid username or password - SQL");
+        } 
+
+        else if (returnlog.length > 0) {
+            console.log(returnlog);
+            console.log('Login successful! - SQL');
+        }
+        else {
+            console.log("Invalid username or password - SQL");
+        }
+    })
+}
+
+
 function makeReserve(){
     const destination = document.getElementById('destinations');
     const date = document.getElementById('bookdate');
@@ -73,6 +110,9 @@ function makeReserve(){
         carpark = document.getElementById("destinations").value;
         togglePopup('booking');
         document.getElementById("here").textContent = carpark;
+        
+        var sql = "INSERT INTO requests (RequestID, TimeArrival, TimeDepature, UserID, SpaceID, Complete, Approved) VALUES('"+RequestID+"', '"+ TimeArrival +"', '"+ TimeDepature +"', '"+ UserID +"', '"+ SpaceID +"', 0, 0)";
+
         if (carpark == "Medical Centre") {
             //Call the corresponding HTML table from carPark.js
         }
