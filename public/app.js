@@ -1,11 +1,3 @@
-// Chat Button
-
-document.getElementsByClassName('chat-button')[0].addEventListener('click', function() {
-    console.log('clicked');
-    window.location.href = '/chat';
-    }
-);
-
 //Hamburger Menu
 
 //import carPark from "./carPark";
@@ -21,21 +13,13 @@ menu.addEventListener("click", function() {
 var tabLinks = document.getElementsByClassName("tab-links");
 var tabContents = document.getElementsByClassName("tab-contents");
 
-function openTab(tabName) {
-    for(tabLink of tabLinks) {
-        tabLink.classList.remove("active-link");
+document.getElementsByClassName('chat-button')[0].addEventListener('click', function() {
+    console.log('clicked');
+    window.location.href = '/chat';
     }
-    for(tabContent of tabContents) {
-        tabContent.classList.remove("active-tab");
-    }
-
-    event.currentTarget.classList.add("active-link");
-    document.getElementById(tabName).classList.add("active-tab");
-
-}
+);
 
 //Scroll Animations
-
 const navigation = document.querySelector(".primary-navigation");
 const navigationHeight = navigation.offsetHeight;
 document.documentElement.style.setProperty("--scroll-padding", navigationHeight + "px");
@@ -123,3 +107,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     
 });
+
+// Chat Button
+
+document.getElementsByClassName('chat-button')[0].addEventListener('click', function() {
+    console.log('clicked');
+    window.location.href = '/chat';
+    }
+);
