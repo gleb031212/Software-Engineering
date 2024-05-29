@@ -108,10 +108,9 @@ function makeReserve(){
     // If all fields are valid, submit the reservation
     if (isValid) {
         carpark = document.getElementById("destinations").value;
+        SlotID = findfreeSpace(carpark);
         togglePopup('booking');
         document.getElementById("here").textContent = carpark;
-        
-        var sql = "INSERT INTO requests (RequestID, TimeArrival, TimeDepature, UserID, SpaceID, Complete, Approved) VALUES('"+RequestID+"', '"+ TimeArrival +"', '"+ TimeDepature +"', '"+ UserID +"', '"+ SpaceID +"', 0, 0)";
 
         if (carpark == "Medical Centre") {
             //Call the corresponding HTML table from carPark.js
@@ -121,6 +120,18 @@ function makeReserve(){
         }  
     }
 }
+
+function findfreeSpace(carpark) {
+    this.ParkID = carpark;
+
+    var testquery1 = "SELECT * FROM SPACE WHERE ParkID = '"+ ParkID +"' and Available = 0 LIMIT 1";
+    console.log(testquery1)
+    SlotID = testquery1.GetSlotID///<<<FAKE
+    var testquery2 = "UPDATE SPACE SET Available = 1 WHERE SlotID = '"+ SlotID +"'";
+    return SpaceID;
+}
+findfreeSpace("");
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.getElementById('new-pl-form');
     const addButton = document.getElementById('addButton');

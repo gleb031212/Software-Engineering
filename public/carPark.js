@@ -1,5 +1,4 @@
 const Space = require('./space');
-
 class carPark{
 
     constructor(id, name, spacesX, spacesY, vehicles){
@@ -82,3 +81,13 @@ test.setSpaceStatus(3,6,2);
 
 
 const tableData = test.generateArray();
+
+//assignSpace(carPark){
+    //for space
+    /// Finds a free space on the carPark, returns its ID or any other identefier that can be displayed to the user.
+    /// then changes the status to occupied.
+//}
+
+//changeSpaceStatus(space???, newStatus){
+//          assigns the newStatus to the selected space.
+//}
