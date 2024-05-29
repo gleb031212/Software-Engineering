@@ -60,3 +60,15 @@ function createAccount(username, password, name, email) {
         }
     })
 };
+
+function findfreeSpace(carpark) {
+    this.ParkID = carpark;
+
+    var testquery1 = "SELECT * FROM SPACE WHERE ParkID = '"+ ParkID +"' and Available = 0 LIMIT 1";
+
+    SlotID = testquery1.value("SlotID")
+ console.log(testquery1.value("SlotID"))
+    var testquery2 = "UPDATE SPACE SET Available = 1 WHERE SlotID = '"+ SlotID +"'";
+    return SpaceID;
+}
+findfreeSpace("2"); 
