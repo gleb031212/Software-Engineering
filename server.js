@@ -31,6 +31,10 @@ app.get('/reserve', (req, res) => {
     res.sendFile(path.join(__dirname, './public/reserve.html'));
 });
 
+app.get('/chat', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/chat.html'));
+});
+
 //DELETE BEFORE SUBMISSION
 app.get('/checkout', (req, res) => {
     res.sendFile(path.join(__dirname, './public/checkout.html'));
