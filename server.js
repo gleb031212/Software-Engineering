@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 app.get('/', (req, res) => {
+    console.log('index.html')
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
@@ -30,10 +31,6 @@ app.get('/reserve', (req, res) => {
     res.sendFile(path.join(__dirname, './public/reserve.html'));
 });
 
-app.get('/chat', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/chat.html'));
-});
-
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, './public/admin.html'));
 });
@@ -42,9 +39,12 @@ app.get('/notify', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notify.html'));
 });
 
-//DELETE BEFORE SUBMISSION
-app.get('/checkout', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/checkout.html'));
+app.get('/chat', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/chat.html'));
+});
+
+app.post('/chat', (req, res) => {
+    console.log(req, res);
 });
 
 app.listen(8080, () => {
