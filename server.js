@@ -54,7 +54,29 @@ app.listen(8080, () => {
 //middleware and static files
 
 express.static(path.join('public'));
-
+app.get('/users', (req, res) => {
+    connection.query('SELECT UserID, UserName, Password, Name, Email FROM users', (error, results) => {
+      if (error) {
+        console.error('Error fetching data:', error.stack);
+        res.status(500).send('Error fetching data');
+        return;
+      }
+      res.json(results);
+    });
+  });
+  
+  app.delete('/users/:id', (req, res) => {
+    const userId = req.params.id;
+    console.log('Received DELETE request for user ID:', userId);
+    connection.query('DELETE FROM users WHERE UserID = ?', [userId], (error, results) => {
+      if (error) {
+        console.error('Error deleting user:', error.stack);
+        res.status(500).send('Error deleting user');
+        return;
+      }
+      res.sendStatus(204); // No Content
+    });
+  });
 app.get('/saveCSV', (req, res) => {
 
     const username = req.query.username;
