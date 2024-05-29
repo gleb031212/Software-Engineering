@@ -43,6 +43,7 @@
 .user-message {
     /* put this on the right hand side of the #chat-messages */
     align-self: flex-end;
+    text-align: right;
 }
 
 #chat-messages {
