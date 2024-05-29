@@ -1,12 +1,12 @@
 import carPark from './carPark.js';
 
 const carParks = {
-    "Blackdale Car Park": new carPark(1, "Blackdale Car Park", 60, 60, []),
-    "N&N Hospital": new carPark(2, "N&N Hospital", 600, 600, []),
-    "UEA Main Car Park": new carPark(3, "UEA Main Car Park", 300, 300, []),
-    "SU Car Park": new carPark(4, "SU Car Park", 20, 20, []),
-    "Ziggurat Car Park": new carPark(5, "Ziggurat Car Park", 80, 80, []),
-    "Chancellors Drive Car Park": new carPark(6, "Chancellors Drive Car Park", 50, 50, [])
+    "Blackdale Car Park": new carPark(1, "Blackdale Car Park", 8, 8, []),
+    "N&N Hospital": new carPark(2, "N&N Hospital", 15, 15, []),
+    "UEA Main Car Park": new carPark(3, "UEA Main Car Park", 10, 10, []),
+    "SU Car Park": new carPark(4, "SU Car Park", 4, 4, []),
+    "Ziggurat Car Park": new carPark(5, "Ziggurat Car Park", 6, 6, []),
+    "Chancellors Drive Car Park": new carPark(6, "Chancellors Drive Car Park", 5, 5, [])
 };
 
 // document.getElementById('location-ms').addEventListener('click', function() {
