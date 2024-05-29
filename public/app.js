@@ -40,22 +40,54 @@ function togglePopup(id){
 }
 ///reserve
 function makeReserve(){
-    carpark = document.getElementById("destinations").value;
-    togglePopup('booking');
-    document.getElementById("here").textContent = carpark;
-    if (carpark == "Medical Centre") {
-        
-        var img = document.createElement("img");
-        img.src = "/medical.png";
-        var src = document.getElementById("pichere")
-        src.appendChild(img);
-    } else if (carpark == "Colney"){
-        var img = document.createElement("img");
-        img.src = "/colney.png";
-        var src = document.getElementById("pichere")
-        src.appendChild(img);
+    const destination = document.getElementById('destinations');
+    const date = document.getElementById('bookdate');
+    const time = document.getElementById('booktime');
+    // Get error message elements
+    const destinationError = document.getElementById('destinationError');
+    const dateError = document.getElementById('dateError');
+    const timeError = document.getElementById('timeError');
+    
+    // Reset error messages
+    destinationError.style.display = 'none';
+    dateError.style.display = 'none';
+    timeError.style.display = 'none';
+    
+    let isValid = true;
+    
+    // Validate destination
+    if (destination.value === "") {
+        destinationError.textContent = "Please select a destination.";
+        destinationError.style.display = 'block';
+        isValid = false;
     }
-
+    
+     // Validate date
+    if (date.value === "") {
+        dateError.textContent = "Please select a date.";
+        dateError.style.display = 'block';
+        isValid = false;
+    }
+    
+    // Validate time
+    if (time.value === "") {
+        timeError.textContent = "Please select a time.";
+        timeError.style.display = 'block';
+        isValid = false;
+    }
+    
+    // If all fields are valid, submit the reservation
+    if (isValid) {
+        carpark = document.getElementById("destinations").value;
+        togglePopup('booking');
+        document.getElementById("here").textContent = carpark;
+        if (carpark == "Medical Centre") {
+            //Call the corresponding HTML table from carPark.js
+        }
+        else if (carpark == "Colney"){
+            //Call the corresponding HTML table from carPark.js
+        }  
+    }
 }
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.getElementById('new-pl-form');

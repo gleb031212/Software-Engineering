@@ -5,7 +5,6 @@
     <link href="carparks.css" rel="stylesheet">
     <link href="general.css" rel="stylesheet">
 </head>
-<body class ="background-image"></body>
 <body>
     <nav class = "navbar">
         <div class="navbar-container">
@@ -28,22 +27,47 @@
             </ul>
         </div>
     </nav>
-    <div>
-        <h1 class = "page-header">Car Parks</h1>
-    </div>
-    <div id="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6796.817637726675!2d1.234161303774012!3d52.623110671999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9e0d87b805801%3A0xb9b97bf00744e573!2sUniversity%20of%20East%20Anglia!5e0!3m2!1sen!2suk!4v1715281088394!5m2!1sen!2suk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <div id = "options">
-        <a href="reserve.html">
-        <div class = "rectangular-card">
-            <h1>Reserve a Space</h1>
-        </div></a>
-        <div class = "rectangular-card">
-            <h1>Do something else</h1>
+    <div id="reserve">
+        <div class="reserve-container">
+            <div class="page-header">
+                <h1>Select a Time and Place!</h1>
+            </div>
+            <select id="destinations">
+                <option value="Medical Centre">Medical Centre</option>
+                <option value="Colney">Colney</option>
+                <option value="Sportspark">Sportspark</option>
+                <option value="The Hive / SU">The Hive / SU</option>
+                <option value="Teaching Wall">Teaching Wall</option>
+                <option value="Chancellor's Drive">Chancellor's Drive</option>
+            </select>
+            <small id="destinationError" class="error-message"></small>
+
+            <input type="date" id="bookdate" min="" max="" />
+            <small id="dateError" class="error-message"></small>
+
+            <input type="time" id="booktime" min="" max="" />
+            <small id="timeError" class="error-message"></small>
+
+            <p id="submit">
+                <button type="submit" onclick="makeReserve()">Submit</button>
+            </p>
         </div>
-        <div class = "rectangular-card">
-            <h1>Or something else</h1>
+
+        <div class="popup" id="booking">
+            <div class="popup-overlay">
+                <div class="popup-content">
+                    <div class="popup-close-btn"><a href="carparks.html">&times;</a></div>
+                    <div class="popup-title">
+                        <h2 id="here"></h2>
+                    </div>
+                    <div class="popup-table-container">
+                        <table id="spaces-table">
+                        <!-- 2D array goes here!-->
+                        </table>
+                    </div>
+                    <button type="submit">Confirm</button>
+                </div>
+            </div>
         </div>
     </div>
 </body>

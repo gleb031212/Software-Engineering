@@ -1,39 +1,74 @@
-/*put #options in the middle of the page*/
-
-.background-image{
-    width: 100%;
-    height: 160vh;
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: white;
-}
-
 .page-header {
     text-align: center;
     font-family: 'Roboto', sans-serif;
-    font-size: 4rem;
+    font-size: 1rem;
     margin: 20px 0px;
     color: white;
 }
 
-#map{
-    display: block;
+#reserve {
+    width: 100%;
+    height: 91.25vh;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 
-#map iframe{
-    width: 700px;
-    height: 450px;
-    margin: 0 auto;
-    display: block;
-    justify-content: center;
-    box-shadow: 0px 0px 20px black;
+.reserve-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #333; /* Change text color inside container to dark for readability */
 }
 
-#options {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    width: 90%;
-    margin: 10px auto;
+.page-header h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#destinations, #bookdate, #booktime {
+    align-items: center;
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+button{
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+}
+
+button:hover{
+    background-color: #0056b3;
+}
+
+small {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px ;
+    margin-bottom: 10px;
+    display: none;
 }
