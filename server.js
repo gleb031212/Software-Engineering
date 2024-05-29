@@ -9,7 +9,17 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static("public"));
-
+var mysql = require('mysql2');
+var connection = mysql.createConnection({
+host: "localhost",
+user: "root",
+password: "softeng",
+database: "parking_db"
+});
+connection.connect(function(err) {
+if (err) throw err;
+console.log("Connected Successfully! - server.js");
+});
 app.get('/', (req, res) => {
     console.log('index.html')
     res.sendFile(path.join(__dirname, './public/index.html'));
@@ -54,6 +64,7 @@ app.listen(8080, () => {
 //middleware and static files
 
 express.static(path.join('public'));
+
 app.get('/users', (req, res) => {
     connection.query('SELECT UserID, UserName, Password, Name, Email FROM users', (error, results) => {
       if (error) {
