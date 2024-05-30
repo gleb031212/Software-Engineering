@@ -65,23 +65,6 @@ function createAccount(username, password, name, email) {
 
 
 
-function findfreeSpace(ParkID) {
-    var SpaceID
-    var sql = "SELECT SpaceID FROM SPACE WHERE ParkID = '"+ ParkID +"' and Available = 0 LIMIT 1";
-    connection.query(sql, function (err, returnlog){  
-        console.log(sql);        
-        if (err || returnlog.length<1){
-            console.log("Invalid ParkID Or Full");
-        } 
-            SpaceID = Object.values(returnlog[0].SpaceID);
-            console.log("SpaceID: " + SpaceID);
-            var sql2 = "UPDATE SPACE SET Available = 1 WHERE SpaceID = '"+ SpaceID +"'";  
-            connection.query(sql2, function (err, returnlog1){
-            }) 
-    })
-}
-
-findfreeSpace(1)
 
 
 

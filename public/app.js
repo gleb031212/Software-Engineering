@@ -2,6 +2,49 @@
 
 //import carPark from "./carPark";
 
+
+
+// var mysql = require('mysql2');
+// var connection = mysql.createConnection({
+// host: "localhost",
+// user: "root",
+// password: "softeng",
+// database: "parking_db"
+// });
+// connection.connect(function(err) {
+// if (err) throw err;
+// console.log("Connected Successfully! - account.js");
+// });
+
+// function findfreeSpace(ParkID, UserID) {
+//     var SpaceID
+//     var sql = "SELECT SpaceID FROM SPACE WHERE ParkID = '"+ ParkID +"' and Available = 0 LIMIT 1";
+//     connection.query(sql, function (err, returnlog){  
+              
+//         if (err || returnlog.length<1){
+//             console.log("Invalid ParkID Or Full");
+//         }   
+
+
+//             SpaceID = returnlog[0].SpaceID;
+//             console.log("SpaceID: " + SpaceID);
+//             console.log(sql);  
+//             var sql2 = "UPDATE SPACE SET Available = 1 WHERE SpaceID = '"+ SpaceID +"'"; 
+//             console.log(sql2); 
+//             connection.query(sql2, function (err, returnlog1){
+//             }) 
+//             var sql3 = "UPDATE SPACE SET UserID = '" +UserID+ "' WHERE SpaceID = '"+ SpaceID +"'";  
+//             console.log(sql3);
+//             connection.query(sql3, function (err, returnlog1){
+//             }) 
+//     })
+// }
+
+// findfreeSpace(1, 1)
+
+
+
+
 const menu = document.querySelector("#mobile-menu")
 const menuLinks = document.querySelector(".navbar-menu")
 
