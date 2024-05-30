@@ -74,10 +74,10 @@ function makeReserve(){
         togglePopup('booking');
         document.getElementById("here").textContent = carpark;
         if (carpark == "Medical Centre") {
-            //Call the corresponding HTML table from carPark.js
+            findfreeSpace(1)
         }
         else if (carpark == "Colney"){
-            //Call the corresponding HTML table from carPark.js
+            findfreeSpace(2)
         }  
     }
 }

@@ -8,6 +8,8 @@ const fs = require('fs');
 const { resolve } = require('path');
 const readline = require('readline');
 
+
+
 var mysql = require('mysql2');
 var connection = mysql.createConnection({
 host: "localhost",
@@ -38,7 +40,7 @@ var testquery = "SELECT * FROM users";
 connection.query(testquery, function (err, usersResponse){
     if (err) throw err;
     if (usersResponse.length > 0) {
-        console.log(usersResponse);
+        //console.log(usersResponse);
     }
 })
 
@@ -56,19 +58,30 @@ function createAccount(username, password, name, email) {
         } 
 
         else if (usersResponse.length > 0) {
-            console.log(usersResponse);
+            //console.log(usersResponse);
         }
     })
 };
 
-function findfreeSpace(carpark) {
-    this.ParkID = carpark;
 
-    var testquery1 = "SELECT * FROM SPACE WHERE ParkID = '"+ ParkID +"' and Available = 0 LIMIT 1";
 
-    SlotID = testquery1.value("SlotID")
- console.log(testquery1.value("SlotID"))
-    var testquery2 = "UPDATE SPACE SET Available = 1 WHERE SlotID = '"+ SlotID +"'";
-    return SpaceID;
+function findfreeSpace(ParkID) {
+    var SpaceID
+    var sql = "SELECT SpaceID FROM SPACE WHERE ParkID = '"+ ParkID +"' and Available = 0 LIMIT 1";
+    connection.query(sql, function (err, returnlog){  
+        console.log(sql);        
+        if (err || returnlog.length<1){
+            console.log("Invalid ParkID Or Full");
+        } 
+            SpaceID = Object.values(returnlog[0].SpaceID);
+            console.log("SpaceID: " + SpaceID);
+            var sql2 = "UPDATE SPACE SET Available = 1 WHERE SpaceID = '"+ SpaceID +"'";  
+            connection.query(sql2, function (err, returnlog1){
+            }) 
+    })
 }
-findfreeSpace("2"); 
+
+findfreeSpace(1)
+
+
+
