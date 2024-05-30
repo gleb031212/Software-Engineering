@@ -32,7 +32,6 @@ if (err) throw err;
 console.log("Connected Successfully! - server.js");
 });
 app.get('/', (req, res) => {
-    console.log('index.html')
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
@@ -54,27 +53,35 @@ app.get('/carparks', (req, res) => {
 	} else {
         res.sendFile(path.join(__dirname, './public/login.html'));
 	}
-
-});
-
-app.get('/reserve', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/reserve.html'));
 });
 
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/admin.html'));
+    if (req.session.logged) {
+        if (req.session.isadmin) {
+            res.sendFile(path.join(__dirname, './public/admin.html'));
+        }
+        else {
+            res.send("Access Denied!");
+        }
+	} else {
+        res.sendFile(path.join(__dirname, './public/login.html'));
+	}
 });
 
 app.get('/notify', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notify.html'));
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/notify.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/login.html'));
+	}
 });
 
 app.get('/chat', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/chat.html'));
-});
-
-app.post('/chat', (req, res) => {
-    console.log(req, res);
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/chat.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/login.html'));
+	}
 });
 
 app.listen(8080, () => {
@@ -189,8 +196,6 @@ app.post('/allocate-space', (req, res) => {
           });
 
           const UserID = req.session.userid;
-            //console.log(UserID)
-          //const spaceID = spaceResult[0].SpaceID;
           const updateUserQuery = 'UPDATE space SET UserID = ? WHERE SpaceID = ?';
           connection.query(updateUserQuery, [UserID, spaceID], (err, updateResult) => {
               if (err) return res.status(500).json({ success: false, message: 'Database error' });
