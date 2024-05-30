@@ -67,3 +67,36 @@ function removeUser(userId, button) {
     })
     .catch(error => console.error('Error deleting user:', error));
 }
+
+
+function getNumberOfAvailableSpaces(carPark) {
+    console.log("OHIO");
+    fetch('/get-available-park-spaces', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ parkID: carPark.id })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("yup")
+        console.log(data.numOfSpaces);
+        return data.numOfSpaces;
+    });
+}
+
+function displayNumberOfAvailableSpaces(carParkID, numberOfSpaces) {
+    const tagToUpdate = document.getElementById(carParkID);
+    tagToUpdate.innerHTML = numberOfSpaces;
+}
+
+document.getElementById('manage-car-parks').addEventListener('click', function() {
+    //event listener for class .available-spaces
+    let carParks = document.getElementsByClassName('available-spaces');
+    console.log(carParks)
+    Array.from(carParks).forEach((carPark) => {
+        getNumberOfAvailableSpaces(carPark).then(result => displayNumberOfAvailableSpaces(carPark.id, result));
+    });
+
+});
