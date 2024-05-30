@@ -36,6 +36,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, './public/login.html'));
 });
@@ -132,14 +136,16 @@ app.get('/login2', (req, res) => {
             req.session.user = username;
             req.session.userid = value[1];
             req.session.isadmin = value[2];
+            res.redirect('/index')
         }
         else if (value == false) {
             req.session.logged = false;
             req.session.user = null;
             req.session.userid = null;
             req.session.isadmin = null;
+            res.redirect('/login')
         }
-        res.send(password);
+         
       });
 });
 
