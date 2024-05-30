@@ -108,6 +108,8 @@ html{
     height: 80px;
 }
 
+
+
 /*========================CARD SECTION===========================*/
 
 .card{
@@ -437,6 +439,10 @@ a .rectangular-card h1{
     width: 300px;
 }
 #space-table{
+    width: 1200px;
+}
+
+#directions{
     width: 1200px;
 }
 .popup-table th{

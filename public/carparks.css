@@ -274,3 +274,7 @@ small {
     background-color: #b4296f;
     color: white;
 }
+
+.results{
+    font-size: 40px;
+}
