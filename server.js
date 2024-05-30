@@ -204,6 +204,11 @@ app.post('/get-admin', (req, res) => {
     return res.json({ isAdmin: req.session.isadmin });
 });
 
+app.post('/get-user', (req, res) => {
+
+    return res.json({ UserID: req.session.userid });
+});
+
 app.post('/get-users', (req, res) => {
     const allUsers = 'SELECT UserName FROM users';
     connection.query(allUsers, (err, results) => {
@@ -224,6 +229,7 @@ app.get('/spaces', (req, res) => {
     res.json(results);
   });
 });
+
 // EXAMPLE FUNCTION FOR GLEB
 app.get('/testing', (req, res) => {
     console.log("UserID = "+req.session.userid);
