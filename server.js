@@ -32,7 +32,6 @@ if (err) throw err;
 console.log("Connected Successfully! - server.js");
 });
 app.get('/', (req, res) => {
-    console.log('index.html')
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
@@ -54,27 +53,35 @@ app.get('/carparks', (req, res) => {
 	} else {
         res.sendFile(path.join(__dirname, './public/login.html'));
 	}
-
-});
-
-app.get('/reserve', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/reserve.html'));
 });
 
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/admin.html'));
+    if (req.session.logged) {
+        if (req.session.isadmin) {
+            res.sendFile(path.join(__dirname, './public/admin.html'));
+        }
+        else {
+            res.send("Access Denied!");
+        }
+	} else {
+        res.sendFile(path.join(__dirname, './public/login.html'));
+	}
 });
 
 app.get('/notify', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notify.html'));
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/notify.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/login.html'));
+	}
 });
 
 app.get('/chat', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/chat.html'));
-});
-
-app.post('/chat', (req, res) => {
-    console.log(req, res);
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/chat.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/login.html'));
+	}
 });
 
 app.listen(8080, () => {
@@ -189,8 +196,6 @@ app.post('/allocate-space', (req, res) => {
           });
 
           const UserID = req.session.userid;
-            //console.log(UserID)
-          //const spaceID = spaceResult[0].SpaceID;
           const updateUserQuery = 'UPDATE space SET UserID = ? WHERE SpaceID = ?';
           connection.query(updateUserQuery, [UserID, spaceID], (err, updateResult) => {
               if (err) return res.status(500).json({ success: false, message: 'Database error' });
@@ -202,6 +207,11 @@ app.post('/allocate-space', (req, res) => {
 
 app.post('/get-admin', (req, res) => {
     return res.json({ isAdmin: req.session.isadmin });
+});
+
+app.post('/get-user', (req, res) => {
+
+    return res.json({ UserID: req.session.userid });
 });
 
 app.post('/get-users', (req, res) => {
@@ -224,17 +234,9 @@ app.get('/spaces', (req, res) => {
     res.json(results);
   });
 });
+
 // EXAMPLE FUNCTION FOR GLEB
 app.get('/testing', (req, res) => {
     console.log("UserID = "+req.session.userid);
     console.log("IsAdmin = "+req.session.isadmin);
 });
-
-app.get('/get-available-park-spaces', (req, res) => {
-    const numOfSpacesQuery = ' SELECT COUNT(*) AS total FROM space WHERE Available = 0 AND ParkID = ?';
-    connection.query(numOfSpacesQuery, [req.session.userid], (err, results) => {
-        if (err) return res.status(500).json({ success: false, message: 'Database error' });
-        const totalSpaces = results[0].total;
-    });
-    return res.json({ numOfSpaces: totalSpaces });
-})
