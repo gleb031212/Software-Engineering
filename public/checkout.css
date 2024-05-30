@@ -155,6 +155,12 @@
     margin-left: 8px;
 }
 
+#payment-popup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #payment-popup .popup-title{
     padding-bottom: 10px;
 }
@@ -167,7 +173,7 @@
     justify-content: center;
 }
 
-#payment-popup button{
+#payment-popup .pay-btn{
     background-color: #000000;
     color: white;
     padding: 10px;
@@ -179,9 +185,11 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: background-color 0.5s ease;
+    margin: 20px auto; 
+    
 }
 
-#payment-popup button:hover{
+#payment-popup .pay-btn:hover{
     background-color: #b4296f;
     color: white;
 }

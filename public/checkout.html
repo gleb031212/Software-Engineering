@@ -10,20 +10,58 @@
 </head>
 <body class ="background-image"></body>
 <body>
-    <nav class = "navbar">
+    <nav id = "navbar">
         <div class="navbar-container">
-            <a href="index.html" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
-            <div class="navbar-toggle" id="mobile-menu">
+            <a href="#home" class="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="default-mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu active" >
+                <li class="navbar-item">
+                    <a href="register.html" class="navbar-link">Register</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="login.html" class="navbar-link">Login</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id = "navbar-user">
+        <div class="navbar-container">
+            <a href="#home" class="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="user-mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
             <ul class="navbar-menu">
                 <li class="navbar-item">
-                    <a href="register.html" class="navbar-link">Register</a>
+                    <a href="register.html" class="navbar-link">Notify</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="login.html" class="navbar-link">Login</a>
+                    <a href="carparks" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id = "navbar-admin">
+        <div class="navbar-container">
+            <a href="#home" class="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="admin-mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="admin.html" class="navbar-link">Admin</a>
                 </li>
                 <li class="navbar-item">
                     <a href="carparks.html" class="navbar-link">Parking</a>
@@ -72,13 +110,14 @@
                         <div class="popup-form-item">
                             <input type="text" id="cvv" name="cvv" placeholder="CVV" required>
                         </div>
-                        <button type="submit">Pay</button>
+                        <div class ="pay-btn" onclick="togglePopup('SC-popup')">
+                            <p>Pay</p>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 <div id = "different-backgroud"></div>
 <script src="/app.js"></script>
