@@ -172,8 +172,21 @@ app.post('/allocate-space', (req, res) => {
 
               res.json({ success: true, spaceID: spaceID });
           });
+
+          const UserID = req.session.userid;
+            //console.log(UserID)
+          //const spaceID = spaceResult[0].SpaceID;
+          const updateUserQuery = 'UPDATE space SET UserID = ? WHERE SpaceID = ?';
+          connection.query(updateUserQuery, [UserID, spaceID], (err, updateResult) => {
+              if (err) return res.status(500).json({ success: false, message: 'Database error' });
+          });
+
       });
   });
+});
+
+app.post('/get-admin', (req, res) => {
+    return res.json({ isAdmin: req.session.isadmin });
 });
 
 // EXAMPLE FUNCTION FOR GLEB

@@ -50,3 +50,27 @@ document.getElementById('send-button').addEventListener('click', function() {
     }).then((response) => response.json())
     .then((json) => console.log(json));
     });
+
+function isAdmin() {
+    return fetch('/get-admin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        return data.isAdmin;
+    });
+};
+
+
+//console.log(isAdmin().then(result => console.log(result)));
+
+function adminChat(isAdmin) {
+    if (isAdmin === 1) {
+        console.log('Admin is online');
+    }
+}
+
+isAdmin().then(result => adminChat(result));
