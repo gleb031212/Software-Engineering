@@ -189,6 +189,24 @@ app.post('/get-admin', (req, res) => {
     return res.json({ isAdmin: req.session.isadmin });
 });
 
+
+
+app.get('/clear-space', (req, res) => {
+    const userID = req.session.userid;
+    if (!userID) {
+        return res.status(401).json({ success: false, message: 'User not authenticated' });
+    }
+    const removeQuery = 'UPDATE space SET Available = 0 WHERE userID = ?';
+    connection.query(removeQuery, [userID], (err, removeResult) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+    });
+    const removeUserQuery = 'UPDATE space SET userID = NULL WHERE userID = ?';
+    connection.query(removeUserQuery, [userID], (err, removeResult) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+      });
+  });
+
+
 // EXAMPLE FUNCTION FOR GLEB
 app.get('/testing', (req, res) => {
     console.log("UserID = "+req.session.userid);
