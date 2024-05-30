@@ -2,7 +2,17 @@ function showPosition(position) {
   let finalPosition = [position.coords.latitude, position.coords.longitude];
   console.log('position:', finalPosition);
 }
-
+function clearSpace() {
+  fetch(`http://localhost:8080/clear-space`, {
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+      }
+      console.log("Space Cleared")
+  })
+  .catch(error => console.error('Error clearing the space:', error));
+}
 //https://www.w3schools.com/html/html5_geolocation.asp
 
 document.getElementById('notify-arrival').addEventListener('click', function() {
@@ -26,6 +36,7 @@ document.getElementById('notify-arrival').addEventListener('click', function() {
 });
 
 document.getElementById('notify-departure').addEventListener('click', function() {
-  // tell admin that user has left
-  window.location.href = '/';
-});
+  clearSpace()
+}
+
+);
