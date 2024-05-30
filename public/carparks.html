@@ -32,6 +32,9 @@
             <div class="page-header">
                 <h1>Select a Time and Place!</h1>
             </div>
+            <div class="desc">
+                <p>Location</p>
+            </div>
             <select id="destinations">
                 <option value="University Car Park">University Car Park</option>
                 <option value="Colney">Colney</option>
@@ -41,34 +44,28 @@
                 <option value="Chancellor's Drive">Chancellor's Drive</option>
             </select>
             <small id="destinationError" class="error-message"></small>
-
-            <input type="date" id="bookdate" min="" max="" />
-            <small id="dateError" class="error-message"></small>
-
-            <input type="time" id="booktime" min="" max="" />
-            <small id="timeError" class="error-message"></small>
-
-            <p id="submit">
-                <button type="submit" onclick="allocateSpace()">Find Space</button>
-            </p>
-            <div id="result"></div>
-        </div>
-
-        <div class="popup" id="booking">
-            <div class="popup-overlay">
-                <div class="popup-content">
-                    <div class="popup-close-btn"><a href="carparks.html">&times;</a></div>
-                    <div class="popup-title">
-                        <h2 id="here"></h2>
-                    </div>
-                    <div class="popup-table-container">
-                        <table id="spaces-table">
-                        <!-- 2D array goes here!-->
-                        </table>
-                    </div>
-                    <button type="submit">Confirm</button>
-                </div>
+            <div class="desc">
+                <p>Booking Date</p>
             </div>
+
+            <input type="date" id="book-date" min="" max="" />
+            <small id="date-error" class="error-message"></small>
+
+            <div class="desc">
+                <p>Start Time</p>
+            </div>
+            <input type="time" id="start-time" min="" max="" />
+            <small id="start-time-error" class="error-message"></small>
+
+            <div class="desc">
+                <p>End Time</p>
+            </div>
+            <input type="time" id="end-time" min="" max="" />
+            <small id="end-time-error" class="error-message"></small>
+
+            <a href="#" class="button" onclick="makeReserve()">Book Space</a>
+
+            <div id="result"></div>
         </div>
     </div>
 </body>

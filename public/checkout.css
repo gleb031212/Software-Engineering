@@ -1,5 +1,5 @@
 .background-image {
-    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('background.jpg');
+    background: rgb(66, 66, 66);
     background-repeat: no-repeat;
     background-size: cover;
     color: black;
@@ -7,24 +7,10 @@
 }
 
 
-
-#checkout-rectangle{
-    width: 450px;
-    background: rgba(255 255, 255, .5);
-    border-radius: 10px;
-    position: relative;
-    margin: 20px auto 0px;
-}
-
 .page-header{
     margin: auto 0;
     text-align: center;
     font-size: 55px;
-}
-
-#price{
-    margin: auto 0;
-    text-align: center;
 }
 
 #line {
@@ -36,22 +22,51 @@
     border-radius: 13px;
 }
 
-#payment-method{
+#checkout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 80vh;
+}
+
+.checkout-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 15px;
+    justify-content: center;
+    background-color: white;
+    border: black solid;
+    border-radius: 30px;
+    width: 450px;
 }
 
-#payment-method #pay-meth-text {
-    font-size: 43px;
-    width: 120%;
-    text-align: center;
+.checkout-header h1{
+    margin-top: 10px;
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px 10px 10px;
 }
 
-#payment-method .payment-option{
+.checkout-header p{
+    border: black solid;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    text-align: left;
+    font-size: 20px;
+    border-: 10px;
+}
+
+#payment-methods-text {
+    font-size: 20px;
+}
+
+
+.payment-option{
     margin: 6px 0px;
-    width: 400px;
+    width: 350px;
     height: 56px;
     padding: 10px;
     border-radius: 15px;
@@ -60,28 +75,63 @@
     display: flex;
 }
 
-#payment-method div h1{
+.payment-option p{
+    padding-left: 10px;
+    font-size: 30px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    
+}
+
+.payment-option span{
+    font-size: 35px;
+    margin-top: -2px;
+}
+
+#checkout-container div h1{
     text-align: center;
 }
 
 #card{
     background-color: #0070c9;   
     color: white;
+    transition: background-color 0.5s ease;
+}
+
+#card:hover{
+    background-color: #004d8b
 }
 
 #paypal{
     background-color: #ffc43a;
     color: white;
+    transition: background-color 0.5s ease;
+}
+
+#paypal:hover{
+    background-color: #ff9800
 }
 
 #apple-pay{
     background-color: black;
     color: white;
+    transition: background-color 0.5s ease;
+}
+
+#apple-pay:hover{
+    background-color: #1a1a1a
 }
 
 #google-pay{
     background-color: #f8f8f8;
     color: black;
+    border: black solid;
+    margin-bottom: 30px;
+    transition: background-color 0.5s ease;
+}
+
+#google-pay:hover{
+    background-color: #8a8a8a
 }
 
 #paypal-logo {
@@ -105,68 +155,34 @@
     margin-left: 8px;
 }
 
-#background-2{
-    background-color: white;
+#payment-popup .popup-title{
+    padding-bottom: 10px;
 }
 
-
-/*-------------------CHECKOUT WITH CARD----------------------*/
-
-
-#checkout-card{
-    display: none;
-    margin: auto auto;
-    width: 50%;
-    background-color: rgb(44, 44, 44);
-    color: white;
-    flex-direction: column;
+#payment-popup .popup-form-item{
+    margin-left: 53px;
+    width: 300px;
+    display: flex;
     align-items: center;
-    text-align: center;
-    font-size: 30px;
-    border-radius: 15px;
-    margin-top: 10px;
-    padding: 20px;
-    margin-bottom: 10px;
-    box-shadow: 0px 0px 20px black;
+    justify-content: center;
 }
 
-#checkout-card input{
-    display: block;
-    margin: auto 0;
-    text-align: center;
-    font-size: 20px;
-    width: 400px;
-    height: 40px;
-    border-style: solid;
-    border-color: black;
-    border-radius: 10px;
-    margin-top: 10px;
-}
-
-#checkout-card input::placeholder{
-    color: rgb(62, 62, 62);
-}
-
-#checkout-card input:focus::placeholder{
-    color: transparent;
-}
-
-#checkout-card button{
-    margin: auto 0;
-    text-align: center;
-    font-size: 20px;
-    width: 200px;
-    height: 40px;
-    border-radius: 4px;
-    margin-top: 10px;
-    border-color: white;
-    border-style: solid;
-    background-color: black;
+#payment-popup button{
+    background-color: #000000;
     color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    width: 100px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background-color 0.5s ease;
 }
 
-#checkout-card button:hover{
-    background-color: #005aa7;
+#payment-popup button:hover{
+    background-color: #b4296f;
+    color: white;
 }
 

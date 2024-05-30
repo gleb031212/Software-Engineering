@@ -73,57 +73,56 @@ function togglePopup(id){
     document.getElementById(id).classList.toggle("active");
     return id;
 }
-///reserve
-function makeReserve(){
+
+function validateReserveForm() {
     const destination = document.getElementById('destinations');
-    const date = document.getElementById('bookdate');
-    const time = document.getElementById('booktime');
+    const date = document.getElementById('book-date'); 
+    const startTime = document.getElementById('start-time'); 
+    const endTime = document.getElementById('end-time'); 
+    
     // Get error message elements
     const destinationError = document.getElementById('destinationError');
-    const dateError = document.getElementById('dateError');
-    const timeError = document.getElementById('timeError');
+    const dateError = document.getElementById('date-error');
+    const startTimeError = document.getElementById('start-time-error');
+    const endTimeError = document.getElementById('end-time-error'); 
     
-    // Reset error messages
     destinationError.style.display = 'none';
     dateError.style.display = 'none';
-    timeError.style.display = 'none';
+    startTimeError.style.display = 'none';
+    endTimeError.style.display = 'none'; 
     
     let isValid = true;
     
-    // Validate destination
     if (destination.value === "") {
         destinationError.textContent = "Please select a destination.";
         destinationError.style.display = 'block';
         isValid = false;
     }
     
-     // Validate date
     if (date.value === "") {
         dateError.textContent = "Please select a date.";
         dateError.style.display = 'block';
         isValid = false;
     }
     
-    // Validate time
-    if (time.value === "") {
-        timeError.textContent = "Please select a time.";
-        timeError.style.display = 'block';
+    if (startTime.value === "") {
+        startTimeError.textContent = "Please select a start time.";
+        startTimeError.style.display = 'block';
+        isValid = false;
+    }
+    
+    if (endTime.value === "") {
+        endTimeError.textContent = "Please select an end time.";
+        endTimeError.style.display = 'block';
         isValid = false;
     }
     
     // If all fields are valid, submit the reservation
     if (isValid) {
-        carpark = document.getElementById("destinations").value;
-        togglePopup('booking');
-        document.getElementById("here").textContent = carpark;
-        if (carpark == "Medical Centre") {
-            findfreeSpace(1)
-        }
-        else if (carpark == "Colney"){
-            findfreeSpace(2)
-        }  
+        window.location.href = 'checkout.html'; 
     }
 }
+
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.getElementById('new-pl-form');
     const addButton = document.getElementById('addButton');
@@ -158,3 +157,31 @@ document.getElementsByClassName('chat-button')[0].addEventListener('click', func
     window.location.href = '/chat';
     }
 );
+
+//Placeholder
+
+function setPlaceholder(input, placeholderText) {
+    input.classList.add('placeholder-text');
+    input.value = placeholderText;
+    
+    input.addEventListener('focus', function() {
+        if (this.classList.contains('placeholder-text')) {
+            this.classList.remove('placeholder-text');
+            this.value = '';
+        }
+    });
+
+    input.addEventListener('blur', function() {
+        if (this.value === '') {
+            this.classList.add('placeholder-text');
+            this.value = placeholderText;
+        }
+    });
+}
+
+// Setting placeholders for date and time inputs
+document.addEventListener('DOMContentLoaded', function() {
+    setPlaceholder(document.getElementById('book-date'), 'Select a date');
+    setPlaceholder(document.getElementById('start-time'), 'Select start time');
+    setPlaceholder(document.getElementById('end-time'), 'Select end time');
+});
