@@ -30,7 +30,7 @@
     </nav>
     <div id="form"> 
         <div class="form-container">
-            <form class="form" method="GET" action="/saveCSV">
+            <form class="form" id="loginForm" method="GET" action="/login2">
                 <div class="form-header">
                     <h1>Login</h1>
                     <p>Please enter your details below</p>
@@ -48,8 +48,11 @@
 
                 <button type="submit">Sign In</button>
             </form>
+            <div id="message"></div>
         </div>
     </div>
     <script src="/app.js"></script>
+    <script src="/accounts.js"></script>
+    <script src="/login.js"></script>
 </body>
 </html>

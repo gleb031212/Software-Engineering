@@ -9,7 +9,6 @@ const { resolve } = require('path');
 const readline = require('readline');
 
 
-
 var mysql = require('mysql2');
 var connection = mysql.createConnection({
 host: "localhost",
@@ -21,6 +20,10 @@ connection.connect(function(err) {
 if (err) throw err;
 console.log("Connected Successfully! - account.js");
 });
+
+function test(){
+    console.log();
+}
 
 // var testquery2 = "DELETE FROM users WHERE Name='Test'";
 // connection.query(testquery2, function (err, usersResponse){
