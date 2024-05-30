@@ -105,7 +105,7 @@ app.get('/users', (req, res) => {
         res.status(500).send('Error deleting user');
         return;
       }
-      res.sendStatus(204); // No Content
+      res.sendStatus(204); 
     });
   });
 app.get('/saveCSV', (req, res) => {
@@ -206,7 +206,17 @@ app.get('/clear-space', (req, res) => {
       });
   });
 
-
+  app.get('/spaces', (req, res) => {
+    console.log("workshere")
+    connection.query('SELECT SpaceID, UserID, Available FROM space', (error, results) => {
+      if (error) {
+        console.error('Error fetching data:', error.stack);
+        res.status(500).send('Error fetching data');
+        return;
+      }
+      res.json(results);
+    });
+  });
 // EXAMPLE FUNCTION FOR GLEB
 app.get('/testing', (req, res) => {
     console.log("UserID = "+req.session.userid);

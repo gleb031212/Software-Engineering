@@ -376,7 +376,10 @@ a .rectangular-card h1{
     z-index: 1;
     display: none;
 }
-
+.scrollable-table {
+    max-height: 400px; /* Adjust the height as needed */
+    overflow-y: auto;
+}
 .popup .popup-content{
     position: absolute;
     top: 50%;
@@ -429,7 +432,13 @@ a .rectangular-card h1{
     padding: 10px;
     width: 800px;
 }
-
+.popup-table-space{
+    padding: 10px;
+    width: 300px;
+}
+#space-table{
+    width: 1200px;
+}
 .popup-table th{
     padding: 10px;
 }
