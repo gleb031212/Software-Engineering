@@ -1,9 +1,9 @@
-.page-header {
+.page-header1 {
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
     margin: 20px 0px;
-    color: white;
+    color: black;
 }
 
 #reserve {
@@ -86,4 +86,191 @@ small {
 
 .desc{
     padding-bottom: 10px;
+}
+
+.page-header{
+    margin: auto 0;
+    text-align: center;
+    font-size: 55px;
+}
+
+#line {
+    width: 360px;
+    height: 3px;
+    background-color: black;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 13px;
+}
+
+#checkout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 80vh;
+}
+
+.checkout-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: black solid;
+    border-radius: 30px;
+    width: 450px;
+}
+
+.checkout-header h1{
+    margin-top: 10px;
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 10px 10px 10px;
+}
+
+.checkout-header p{
+    border: black solid;
+    border-radius: 10px;
+    padding: 5px;
+    align-items: center;
+    text-align: left;
+    font-size: 20px;
+    border-: 10px;
+}
+
+#payment-methods-text {
+    font-size: 20px;
+}
+
+
+.payment-option{
+    margin: 6px 0px;
+    width: 350px;
+    height: 56px;
+    padding: 10px;
+    border-radius: 15px;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+}
+
+.payment-option p{
+    padding-left: 10px;
+    font-size: 30px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    
+}
+
+.payment-option span{
+    font-size: 35px;
+    margin-top: -2px;
+}
+
+#checkout-container div h1{
+    text-align: center;
+}
+
+#card{
+    background-color: #0070c9;   
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+#card:hover{
+    background-color: #004d8b
+}
+
+#paypal{
+    background-color: #ffc43a;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+#paypal:hover{
+    background-color: #ff9800
+}
+
+#apple-pay{
+    background-color: black;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+
+#apple-pay:hover{
+    background-color: #1a1a1a
+}
+
+#google-pay{
+    background-color: #f8f8f8;
+    color: black;
+    border: black solid;
+    margin-bottom: 30px;
+    transition: background-color 0.5s ease;
+}
+
+#google-pay:hover{
+    background-color: #8a8a8a
+}
+
+#paypal-logo {
+    width: 105px;
+    height: 30px;
+    margin-top: 3px;
+    margin-left: 6px;
+}
+
+#applelogo {
+    width: 27px;
+    height: 30px;
+    margin-top: 2px;
+    margin-left: 8px;
+}
+
+#googlelogo {
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+    margin-left: 8px;
+}
+
+#payment-popup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#payment-popup .popup-title{
+    padding-bottom: 10px;
+}
+
+#payment-popup .popup-form-item{
+    margin-left: 53px;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#payment-popup .pay-btn{
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 62px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: background-color 0.5s ease;
+    margin: 20px auto; 
+    
+}
+
+#payment-popup .pay-btn:hover{
+    background-color: #b4296f;
+    color: white;
 }

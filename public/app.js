@@ -82,9 +82,6 @@ function whatUserID() {
     });
 }; 
 
-
-
-
 function navBarStateAdmin(isAdmin) {
     console.log(isAdmin);
     if (isAdmin === 1) {
@@ -105,8 +102,6 @@ function navBarState(userID) {
 
 whatUserID().then(result => navBarState(result));
 isAdmin().then(result => navBarStateAdmin(result));
-
-
 
 
 // For the user menu
@@ -139,11 +134,10 @@ document.getElementsByClassName('chat-button')[0].addEventListener('click', func
 //Scroll Animations
 document.getElementsByClassName('arrow')[0].addEventListener('click', function() {
     const navigation = document.querySelector(".primary-navigation");
-const navigationHeight = navigation.offsetHeight;
-document.documentElement.style.setProperty("--scroll-padding", navigationHeight + "px");
-    }
+    const navigationHeight = navigation.offsetHeight;
+    document.documentElement.style.setProperty("--scroll-padding", navigationHeight + "px");
+}
 );
-
 
 //Popups
 
@@ -152,7 +146,7 @@ function togglePopup(id){
     return id;
 }
 
-function validateReserveForm() {
+function validateReserveForm(id) {
     const destination = document.getElementById('destinations');
     const date = document.getElementById('book-date'); 
     const startTime = document.getElementById('start-time'); 
@@ -197,7 +191,7 @@ function validateReserveForm() {
     
     // If all fields are valid, submit the reservation
     if (isValid) {
-        window.location.href = 'checkout.html'; 
+        togglePopup(id);
     }
 }
 
