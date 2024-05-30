@@ -54,6 +54,61 @@ defaultMenu.addEventListener("click", function() {
     defaultMenuLinks.classList.toggle('active');
 });
 
+
+function isAdmin() {
+    return fetch('/get-admin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        return data.isAdmin;
+    });
+};
+function whatUserID() {
+    return fetch('/get-user', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        return data.UserID;
+    });
+}; 
+
+
+
+
+function navBarStateAdmin(isAdmin) {
+    console.log(isAdmin);
+    if (isAdmin === 1) {
+       
+        document.getElementById("navbar-user").style.display = "none";
+        document.getElementById("navbar-admin").style.display = "flex";
+
+    }
+}
+function navBarState(userID) {
+    console.log(userID);
+    if (userID != null) {
+       
+        document.getElementById("navbar").style.display = "none";
+        document.getElementById("navbar-user").style.display = "flex";
+    }
+}
+
+whatUserID().then(result => navBarState(result));
+isAdmin().then(result => navBarStateAdmin(result));
+
+
+
+
 // For the user menu
 const userMenu = document.querySelector("#user-mobile-menu");
 const userMenuLinks = document.querySelector("#navbar-user .navbar-menu");
@@ -82,9 +137,13 @@ document.getElementsByClassName('chat-button')[0].addEventListener('click', func
 );
 
 //Scroll Animations
-const navigation = document.querySelector(".primary-navigation");
+document.getElementsByClassName('arrow')[0].addEventListener('click', function() {
+    const navigation = document.querySelector(".primary-navigation");
 const navigationHeight = navigation.offsetHeight;
 document.documentElement.style.setProperty("--scroll-padding", navigationHeight + "px");
+    }
+);
+
 
 //Popups
 
