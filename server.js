@@ -99,3 +99,29 @@ app.get('/saveCSV', (req, res) => {
 
     Account.createAccount2(username,password,name,email);
 });
+app.post('/allocate-space', (req, res) => {
+  const parkName = req.body.parkName;
+
+  const findParkQuery = 'SELECT ParkID FROM car_parks WHERE ParkName = ?';
+  connection.query(findParkQuery, [parkName], (err, parkResult) => {
+      if (err) return res.status(500).json({ success: false, message: 'Database error' });
+
+      if (parkResult.length === 0) return res.status(404).json({ success: false, message: 'Park not found' });
+
+      const parkID = parkResult[0].ParkID;
+      const findSpaceQuery = 'SELECT SpaceID FROM space WHERE ParkID = ? AND Available = 0 LIMIT 1';
+      connection.query(findSpaceQuery, [parkID], (err, spaceResult) => {
+          if (err) return res.status(500).json({ success: false, message: 'Database error' });
+
+          if (spaceResult.length === 0) return res.status(404).json({ success: false, message: 'No available spaces' });
+
+          const spaceID = spaceResult[0].SpaceID;
+          const updateSpaceQuery = 'UPDATE space SET Available = 1 WHERE SpaceID = ?';
+          connection.query(updateSpaceQuery, [spaceID], (err, updateResult) => {
+              if (err) return res.status(500).json({ success: false, message: 'Database error' });
+
+              res.json({ success: true, spaceID: spaceID });
+          });
+      });
+  });
+});

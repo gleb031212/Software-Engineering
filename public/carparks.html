@@ -33,7 +33,7 @@
                 <h1>Select a Time and Place!</h1>
             </div>
             <select id="destinations">
-                <option value="Medical Centre">Medical Centre</option>
+                <option value="University Car Park">University Car Park</option>
                 <option value="Colney">Colney</option>
                 <option value="Sportspark">Sportspark</option>
                 <option value="The Hive / SU">The Hive / SU</option>
@@ -49,8 +49,9 @@
             <small id="timeError" class="error-message"></small>
 
             <p id="submit">
-                <button type="submit" onclick="makeReserve()">Submit</button>
+                <button type="submit" onclick="allocateSpace()">Find Space</button>
             </p>
+            <div id="result"></div>
         </div>
 
         <div class="popup" id="booking">
@@ -71,5 +72,6 @@
         </div>
     </div>
 </body>
+<script src="carparks.js"></script>
 <script src="app.js"></script>
 </html>
