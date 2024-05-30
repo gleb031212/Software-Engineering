@@ -1,10 +1,12 @@
-const Account = require('./public/account.js');
 //https://stackoverflow.com/questions/5797852/in-node-js-how-do-i-include-functions-from-my-other-files
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const session = require('express-session');
+const Login = require('./public/login.js');
+const Account = require('./public/account.js');
 const { stringify } = require('querystring');
-
+//end citation
 const app = express();
 
 app.use(express.json());
@@ -16,6 +18,15 @@ user: "root",
 password: "softeng",
 database: "parking_db"
 });
+
+//https://codeshack.io/basic-login-system-nodejs-express-mysql/
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+//end citation
+
 connection.connect(function(err) {
 if (err) throw err;
 console.log("Connected Successfully! - server.js");
@@ -34,7 +45,12 @@ app.get('/register', (req, res) => {
 });
 
 app.get('/carparks', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/carparks.html'));
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/carparks.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/login.html'));
+	}
+
 });
 
 app.get('/reserve', (req, res) => {
@@ -99,6 +115,34 @@ app.get('/saveCSV', (req, res) => {
 
     Account.createAccount2(username,password,name,email);
 });
+
+app.get('/login2', (req, res) => {
+
+    const username = req.query.username;
+    const password = req.query.password;
+
+    const promise = new Promise(function(resolve,reject){
+        Login(username,password, function(callback) {
+            resolve(callback);
+        });
+      })
+      promise.then((value) => {
+        if (value[0] == true) {
+            req.session.logged = true;
+            req.session.user = username;
+            req.session.userid = value[1];
+            req.session.isadmin = value[2];
+        }
+        else if (value == false) {
+            req.session.logged = false;
+            req.session.user = null;
+            req.session.userid = null;
+            req.session.isadmin = null;
+        }
+        res.send(password);
+      });
+});
+
 app.post('/allocate-space', (req, res) => {
   const parkName = req.body.parkName;
 
@@ -124,4 +168,10 @@ app.post('/allocate-space', (req, res) => {
           });
       });
   });
+});
+
+// EXAMPLE FUNCTION FOR GLEB
+app.get('/testing', (req, res) => {
+    console.log("UserID = "+req.session.userid);
+    console.log("IsAdmin = "+req.session.isadmin);
 });
