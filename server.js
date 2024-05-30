@@ -185,6 +185,10 @@ app.post('/allocate-space', (req, res) => {
   });
 });
 
+app.post('/get-admin', (req, res) => {
+    return res.json({ isAdmin: req.session.isadmin });
+});
+
 // EXAMPLE FUNCTION FOR GLEB
 app.get('/testing', (req, res) => {
     console.log("UserID = "+req.session.userid);
