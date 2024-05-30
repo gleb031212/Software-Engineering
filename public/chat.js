@@ -64,13 +64,69 @@ function isAdmin() {
     });
 };
 
+function getListOfUsers() {
+    return fetch('/get-users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        return data.allUsers;
+    });
+};
+
 
 //console.log(isAdmin().then(result => console.log(result)));
 
-function adminChat(isAdmin) {
+function outputUsersList(allUsers) {
+    console.log(allUsers);
+    var usersList = document.createElement('div');
+    usersList.id = 'users-list';
+    var chatBox = document.getElementById('chat-box');
+    allUsers.forEach((user) => {
+        var userDiv = document.createElement('div');
+        userDiv.textContent = '@' + user.UserName;
+        userDiv.classList.add('user');
+        userDiv.id = user.UserName;
+        chatBox.appendChild(userDiv);
+
+        document.getElementById(user.UserName).addEventListener('click', function() {
+            allUsers.forEach(user => {
+                document.getElementById(user.UserName).style.display = 'none';
+            });
+            document.getElementById('chat-messages').style.display = 'flex';
+            document.getElementById('chat-form').style.display = 'flex';
+        });
+
+        let adminMessages = document.getElementsByClassName('admin-message');
+        console.log(adminMessages);
+        Array.from(adminMessages).forEach((message) => {
+            message.style.marginRight = '0px';
+            message.style.marginLeft = '10px';
+            message.style.alignSelf = 'auto';
+            message.style.textAlign = 'right';
+        });
+
+        let userMessages = document.getElementsByClassName('user-message');
+        Array.from(userMessages).forEach((message) => {
+            message.style.marginRight = '10px';
+            message.style.marginLeft = '0px';
+            message.style.alignSelf = 'flex-start';
+            message.style.textAlign = 'auto';
+        });
+    });
+
+    
+}
+
+function adminView(isAdmin) {
     if (isAdmin === 1) {
-        console.log('Admin is online');
+        document.getElementById('chat-messages').style.display = 'none';
+        document.getElementById('chat-form').style.display = 'none';
+        getListOfUsers().then(allUsers => outputUsersList(allUsers));
     }
 }
 
-isAdmin().then(result => adminChat(result));
+isAdmin().then(result => adminView(result));
