@@ -204,11 +204,6 @@ app.post('/get-admin', (req, res) => {
     return res.json({ isAdmin: req.session.isadmin });
 });
 
-app.post('/get-user', (req, res) => {
-
-    return res.json({ UserID: req.session.userid });
-});
-
 app.post('/get-users', (req, res) => {
     const allUsers = 'SELECT UserName FROM users';
     connection.query(allUsers, (err, results) => {
@@ -229,9 +224,17 @@ app.get('/spaces', (req, res) => {
     res.json(results);
   });
 });
-
 // EXAMPLE FUNCTION FOR GLEB
 app.get('/testing', (req, res) => {
     console.log("UserID = "+req.session.userid);
     console.log("IsAdmin = "+req.session.isadmin);
 });
+
+app.get('/get-available-park-spaces', (req, res) => {
+    const numOfSpacesQuery = ' SELECT COUNT(*) AS total FROM space WHERE Available = 0 AND ParkID = ?';
+    connection.query(numOfSpacesQuery, [req.session.userid], (err, results) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+        const totalSpaces = results[0].total;
+    });
+    return res.json({ numOfSpaces: totalSpaces });
+})
