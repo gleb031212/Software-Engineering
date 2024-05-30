@@ -149,6 +149,21 @@ app.get('/login2', (req, res) => {
       });
 });
 
+app.get('/clear-space', (req, res) => {
+    const userID = req.session.userid;
+    if (!userID) {
+        return res.status(401).json({ success: false, message: 'User not authenticated' });
+    }
+    const removeQuery = 'UPDATE space SET Available = 0 WHERE userID = ?';
+    connection.query(removeQuery, [userID], (err, removeResult) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+    });
+    const removeUserQuery = 'UPDATE space SET userID = NULL WHERE userID = ?';
+    connection.query(removeUserQuery, [userID], (err, removeResult) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+      });
+});
+
 app.post('/allocate-space', (req, res) => {
   const parkName = req.body.parkName;
 
@@ -189,34 +204,26 @@ app.post('/get-admin', (req, res) => {
     return res.json({ isAdmin: req.session.isadmin });
 });
 
+app.post('/get-users', (req, res) => {
+    const allUsers = 'SELECT UserName FROM users';
+    connection.query(allUsers, (err, results) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
 
+        res.json({ allUsers: results });
+    });
+});
 
-app.get('/clear-space', (req, res) => {
-    const userID = req.session.userid;
-    if (!userID) {
-        return res.status(401).json({ success: false, message: 'User not authenticated' });
+app.get('/spaces', (req, res) => {
+  console.log("workshere")
+  connection.query('SELECT SpaceID, UserID, Available FROM space', (error, results) => {
+    if (error) {
+      console.error('Error fetching data:', error.stack);
+      res.status(500).send('Error fetching data');
+      return;
     }
-    const removeQuery = 'UPDATE space SET Available = 0 WHERE userID = ?';
-    connection.query(removeQuery, [userID], (err, removeResult) => {
-        if (err) return res.status(500).json({ success: false, message: 'Database error' });
-    });
-    const removeUserQuery = 'UPDATE space SET userID = NULL WHERE userID = ?';
-    connection.query(removeUserQuery, [userID], (err, removeResult) => {
-        if (err) return res.status(500).json({ success: false, message: 'Database error' });
-      });
+    res.json(results);
   });
-
-  app.get('/spaces', (req, res) => {
-    console.log("workshere")
-    connection.query('SELECT SpaceID, UserID, Available FROM space', (error, results) => {
-      if (error) {
-        console.error('Error fetching data:', error.stack);
-        res.status(500).send('Error fetching data');
-        return;
-      }
-      res.json(results);
-    });
-  });
+});
 // EXAMPLE FUNCTION FOR GLEB
 app.get('/testing', (req, res) => {
     console.log("UserID = "+req.session.userid);
