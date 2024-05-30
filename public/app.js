@@ -43,19 +43,38 @@
 // findfreeSpace(1, 1)
 
 
+//Navbars//////////////////////////////////////////////////////////
 
+const defaultMenu = document.querySelector("#default-mobile-menu");
+const defaultMenuLinks = document.querySelector("#navbar .navbar-menu");
 
-const menu = document.querySelector("#mobile-menu")
-const menuLinks = document.querySelector(".navbar-menu")
-
-menu.addEventListener("click", function() {
-    menu.classList.toggle('is-active');
-    menuLinks.classList.toggle('active');
+defaultMenu.addEventListener("click", function() {
+    console.log("Default menu clicked");
+    defaultMenu.classList.toggle('is-active');
+    defaultMenuLinks.classList.toggle('active');
 });
 
-var tabLinks = document.getElementsByClassName("tab-links");
-var tabContents = document.getElementsByClassName("tab-contents");
+// For the user menu
+const userMenu = document.querySelector("#user-mobile-menu");
+const userMenuLinks = document.querySelector("#navbar-user .navbar-menu");
 
+userMenu.addEventListener("click", function() {
+    console.log("User menu clicked");
+    userMenu.classList.toggle('is-active');
+    userMenuLinks.classList.toggle('active');
+});
+
+// For the admin menu
+const adminMenu = document.querySelector("#admin-mobile-menu");
+const adminMenuLinks = document.querySelector("#navbar-admin .navbar-menu");
+
+adminMenu.addEventListener("click", function() {
+    console.log("Admin menu clicked");
+    adminMenu.classList.toggle('is-active');
+    adminMenuLinks.classList.toggle('active');
+});
+
+////////////////////////////////////////////////////////////////
 document.getElementsByClassName('chat-button')[0].addEventListener('click', function() {
     console.log('clicked');
     window.location.href = '/chat';

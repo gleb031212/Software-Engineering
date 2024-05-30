@@ -9,15 +9,15 @@
 </head>
 <body class ="background-image"></body>
 <body>
-    <nav class = "navbar">
+    <nav id = "navbar">
         <div class="navbar-container">
-            <a href="#home" id="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" id="logo"></a>
-            <div class="navbar-toggle" id="mobile-menu">
+            <a href="#home" class="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="default-mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <ul class="navbar-menu">
+            <ul class="navbar-menu active" >
                 <li class="navbar-item">
                     <a href="register.html" class="navbar-link">Register</a>
                 </li>
@@ -26,6 +26,44 @@
                 </li>
                 <li class="navbar-item">
                     <a href="carparks" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id = "navbar-user">
+        <div class="navbar-container">
+            <a href="#home" class="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="user-mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="register.html" class="navbar-link">Notify</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id = "navbar-admin">
+        <div class="navbar-container">
+            <a href="#home" class="navbar-logo"> <img src="uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="admin-mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="admin.html" class="navbar-link">Admin</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks.html" class="navbar-link">Parking</a>
                 </li>
             </ul>
         </div>
