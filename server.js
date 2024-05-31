@@ -20,11 +20,7 @@ database: "parking_db"
 });
 
 //https://codeshack.io/basic-login-system-nodejs-express-mysql/
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}));
+app.use(session({secret: 'secret', resave: true, saveUninitialized: true}));
 //end citation
 
 connection.connect(function(err) {
@@ -224,7 +220,6 @@ app.post('/get-users', (req, res) => {
 });
 
 app.get('/spaces', (req, res) => {
-  console.log("workshere")
   connection.query('SELECT SpaceID, UserID, Available, ParkID FROM space', (error, results) => {
     if (error) {
       console.error('Error fetching data:', error.stack);
