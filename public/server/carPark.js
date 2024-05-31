@@ -58,15 +58,6 @@ class carPark{
         return this.spaceGrid[x][y];
     }
 
-    // assignSpace(vehicle){
-    //     // will find an available space in car park by finding null in spaceVisual, then assign the space to the vehicle by returning that space and replacing null with the vehicle object
-    //     for (let i = 0; i < this.spaceVisual.length; i++){
-    //         if (this.spaceVisual[i] === null){
-    //             this.spaceVisual[i] = vehicle;
-    //             return i;
-    //         }
-    //     }
-    // }
 }
 test = new carPark(1, "Blackdale Car Park", 8, 8, []);
 test.setSpaceStatus(1,1,1);

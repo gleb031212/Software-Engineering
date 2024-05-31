@@ -8,19 +8,5 @@ document.getElementById('formData').addEventListener('submit', async function(ev
         email: document.getElementById('email').value
     };
 
-    // try {
-    //     const response = await fetch('/saveCSV', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(formData)
-    //     });
-    //     console.log(formData);
-    //     const data = await response.json();
-    //     console.log(data);
-    // } catch (error) {
-    //     console.error('Error:', error);
-    // }
 });
 
