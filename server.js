@@ -225,7 +225,7 @@ app.post('/get-users', (req, res) => {
 
 app.get('/spaces', (req, res) => {
   console.log("workshere")
-  connection.query('SELECT SpaceID, UserID, Available FROM space', (error, results) => {
+  connection.query('SELECT SpaceID, UserID, Available, ParkID FROM space', (error, results) => {
     if (error) {
       console.error('Error fetching data:', error.stack);
       res.status(500).send('Error fetching data');

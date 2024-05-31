@@ -275,6 +275,12 @@ small {
     color: white;
 }
 
-.results{
+#result{
+    text-align: center;
     font-size: 40px;
+}
+
+.directions-img {
+    display: none;
+    width: 50%;
 }

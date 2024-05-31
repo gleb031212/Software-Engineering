@@ -110,11 +110,11 @@
                     <a>Manage Accounts</a>
                 </div>
             </div>
-            <div class="admin-feature">
+            <!-- <div class="admin-feature">
                 <div class="admin-card-text" onclick="togglePopup('UC-popup')">
                     <a>User Communication</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -125,24 +125,34 @@
                 <div class="popup-title">
                     <h2>Choose a Parking Lot</h2>
                 </div>
-                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup1')">
                     <div class="admin-card-text">
                         <a>University Car Park</a>
                     </div>
                 </div>
-                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup2')">
                     <div class="admin-card-text">
-                        <a>Thomas Paine Car Park</a>
+                        <a>Colney</a>
                     </div>
                 </div>
-                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup3')">
                     <div class="admin-card-text">
-                        <a>Sainsburys Center Car Park</a>
+                        <a>Sportspark</a>
                     </div>
                 </div>
-                <div class="admin-feature"  onclick="togglePopup('MSL-popup')">
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup4')">
                     <div class="admin-card-text">
-                        <a>Blackdale Car Park</a>
+                        <a>The Hive / SU</a>
+                    </div>
+                </div>
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup5')">
+                    <div class="admin-card-text">
+                        <a>Teaching Wall</a>
+                    </div>
+                </div>
+                <div class="admin-feature"  onclick="togglePopup('MSL-popup6')">
+                    <div class="admin-card-text">
+                        <a>Chancellors Drive</a>
                     </div>
                 </div>
             </div>
@@ -158,17 +168,18 @@
                     <p>Add a Parking Lot <button id="add-btn" onclick = "togglePopup('add-pl-popup')">Add</button></p>
                 </div>
                 <div class="popup-table-container">
-                    <table class="popup-table" border="1">
+                    
+                    <table id="spaces-table" class="popup-table" border="1">
                         <thead>
                             <tr>
                                 <th>Car Park</th>
                                 <th>Total Spaces</th>
                                 <th>Available Spaces</th>
-                                <th>Actions</th>
+                                <!-- <th>Actions</th> -->
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
+                        <tbody> 
+                            <!-- <tr>
                                 <td>University Car Park</td>
                                 <td>500</td>
                                 <td>346</td>
@@ -191,7 +202,7 @@
                                 <td>500</td>
                                 <td>346</td>
                                 <td><button>Remove</button></td>
-                            </tr>
+                            </tr> -->
                         </tbody>
                     </table>
                 </div>
@@ -286,15 +297,140 @@
         </div>
     </div>
 
-    <div class="popup" id="MSL-popup">
+    <div class="popup" id="MSL-popup1">
         <div class="popup-overlay">
             <div class="popup-content" id="space-table">
-                <div class="popup-close-btn" onclick="togglePopup('MSL-popup')">&times;</div>
+                <div class="popup-close-btn" onclick="togglePopup('MSL-popup1')">&times;</div>
                 <div class="popup-title">
                     <h2>Spaces</h2>
                     <div class="popup-table-container">
                         <div class="scrollable-table">
-                        <table id="spaces-table" class = "popup-table" border = "1">
+                        <table id="spaces-table1" class = "popup-table" border = "1">
+                            <thead>
+                                <tr>
+                                    <th>SpaceNum</th>
+                                    <th>UserID</th>
+                                    <th>Available</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="MSL-popup2">
+        <div class="popup-overlay">
+            <div class="popup-content" id="space-table">
+                <div class="popup-close-btn" onclick="togglePopup('MSL-popup2')">&times;</div>
+                <div class="popup-title">
+                    <h2>Spaces</h2>
+                    <div class="popup-table-container">
+                        <div class="scrollable-table">
+                        <table id="spaces-table2" class = "popup-table" border = "1">
+                            <thead>
+                                <tr>
+                                    <th>SpaceNum</th>
+                                    <th>UserID</th>
+                                    <th>Available</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="MSL-popup3">
+        <div class="popup-overlay">
+            <div class="popup-content" id="space-table">
+                <div class="popup-close-btn" onclick="togglePopup('MSL-popup3')">&times;</div>
+                <div class="popup-title">
+                    <h2>Spaces</h2>
+                    <div class="popup-table-container">
+                        <div class="scrollable-table">
+                        <table id="spaces-table3" class = "popup-table" border = "1">
+                            <thead>
+                                <tr>
+                                    <th>SpaceNum</th>
+                                    <th>UserID</th>
+                                    <th>Available</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="MSL-popup4">
+        <div class="popup-overlay">
+            <div class="popup-content" id="space-table">
+                <div class="popup-close-btn" onclick="togglePopup('MSL-popup4')">&times;</div>
+                <div class="popup-title">
+                    <h2>Spaces</h2>
+                    <div class="popup-table-container">
+                        <div class="scrollable-table">
+                        <table id="spaces-table4" class = "popup-table" border = "1">
+                            <thead>
+                                <tr>
+                                    <th>SpaceNum</th>
+                                    <th>UserID</th>
+                                    <th>Available</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="MSL-popup5">
+        <div class="popup-overlay">
+            <div class="popup-content" id="space-table">
+                <div class="popup-close-btn" onclick="togglePopup('MSL-popup5')">&times;</div>
+                <div class="popup-title">
+                    <h2>Spaces</h2>
+                    <div class="popup-table-container">
+                        <div class="scrollable-table">
+                        <table id="spaces-table5" class = "popup-table" border = "1">
+                            <thead>
+                                <tr>
+                                    <th>SpaceNum</th>
+                                    <th>UserID</th>
+                                    <th>Available</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="MSL-popup6">
+        <div class="popup-overlay">
+            <div class="popup-content" id="space-table">
+                <div class="popup-close-btn" onclick="togglePopup('MSL-popup6')">&times;</div>
+                <div class="popup-title">
+                    <h2>Spaces</h2>
+                    <div class="popup-table-container">
+                        <div class="scrollable-table">
+                        <table id="spaces-table6" class = "popup-table" border = "1">
                             <thead>
                                 <tr>
                                     <th>SpaceNum</th>
