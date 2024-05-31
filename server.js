@@ -1,50 +1,87 @@
-const Account = require('./public/account.js');
 //https://stackoverflow.com/questions/5797852/in-node-js-how-do-i-include-functions-from-my-other-files
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const session = require('express-session');
+const Login = require('./public/server/login.js');
+const Account = require('./public/server/account.js');
 const { stringify } = require('querystring');
-
+//end citation
 const app = express();
 
 app.use(express.json());
 app.use(express.static("public"));
+var mysql = require('mysql2');
+var connection = mysql.createConnection({
+host: "localhost",
+user: "root",
+password: "softeng",
+database: "parking_db"
+});
 
+//https://codeshack.io/basic-login-system-nodejs-express-mysql/
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
+//end citation
+
+connection.connect(function(err) {
+if (err) throw err;
+console.log("Connected Successfully! - server.js");
+});
 app.get('/', (req, res) => {
-    console.log('index.html')
-    res.sendFile(path.join(__dirname, './public/index.html'));
+    res.sendFile(path.join(__dirname, './public/pages/index.html'));
+});
+
+app.get('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/pages/index.html'));
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/login.html'));
+    res.sendFile(path.join(__dirname, './public/pages/login.html'));
 });
 
 app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/register.html'));
+    res.sendFile(path.join(__dirname, './public/pages/register.html'));
 });
 
 app.get('/carparks', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/carparks.html'));
-});
-
-app.get('/reserve', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/reserve.html'));
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/pages/carparks.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/pages/login.html'));
+	}
 });
 
 app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/admin.html'));
+    if (req.session.logged) {
+        if (req.session.isadmin) {
+            res.sendFile(path.join(__dirname, './public/pages/admin.html'));
+        }
+        else {
+            res.send("Access Denied!");
+        }
+	} else {
+        res.sendFile(path.join(__dirname, './public/pages/login.html'));
+	}
 });
 
 app.get('/notify', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notify.html'));
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/pages/notify.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/pages/login.html'));
+	}
 });
 
 app.get('/chat', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/chat.html'));
-});
-
-app.post('/chat', (req, res) => {
-    console.log(req, res);
+    if (req.session.logged) {
+        res.sendFile(path.join(__dirname, './public/pages/chat.html'));
+	} else {
+        res.sendFile(path.join(__dirname, './public/pages/login.html'));
+	}
 });
 
 app.listen(8080, () => {
@@ -54,6 +91,7 @@ app.listen(8080, () => {
 //middleware and static files
 
 express.static(path.join('public'));
+
 app.get('/users', (req, res) => {
     connection.query('SELECT UserID, UserName, Password, Name, Email FROM users', (error, results) => {
       if (error) {
@@ -74,7 +112,7 @@ app.get('/users', (req, res) => {
         res.status(500).send('Error deleting user');
         return;
       }
-      res.sendStatus(204); // No Content
+      res.sendStatus(204); 
     });
   });
 app.get('/saveCSV', (req, res) => {
@@ -87,4 +125,118 @@ app.get('/saveCSV', (req, res) => {
     res.send(password);
 
     Account.createAccount2(username,password,name,email);
+});
+
+app.get('/login2', (req, res) => {
+
+    const username = req.query.username;
+    const password = req.query.password;
+
+    const promise = new Promise(function(resolve,reject){
+        Login(username,password, function(callback) {
+            resolve(callback);
+        });
+      })
+      promise.then((value) => {
+        if (value[0] == true) {
+            req.session.logged = true;
+            req.session.user = username;
+            req.session.userid = value[1];
+            req.session.isadmin = value[2];
+            res.redirect('/index')
+        }
+        else if (value == false) {
+            req.session.logged = false;
+            req.session.user = null;
+            req.session.userid = null;
+            req.session.isadmin = null;
+            res.redirect('/login')
+        }
+         
+      });
+});
+
+app.get('/clear-space', (req, res) => {
+    const userID = req.session.userid;
+    if (!userID) {
+        return res.status(401).json({ success: false, message: 'User not authenticated' });
+    }
+    const removeQuery = 'UPDATE space SET Available = 0 WHERE userID = ?';
+    connection.query(removeQuery, [userID], (err, removeResult) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+    });
+    const removeUserQuery = 'UPDATE space SET userID = NULL WHERE userID = ?';
+    connection.query(removeUserQuery, [userID], (err, removeResult) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+      });
+});
+
+app.post('/allocate-space', (req, res) => {
+  const parkName = req.body.parkName;
+
+  const findParkQuery = 'SELECT ParkID FROM car_parks WHERE ParkName = ?';
+  connection.query(findParkQuery, [parkName], (err, parkResult) => {
+      if (err) return res.status(500).json({ success: false, message: 'Database error' });
+
+      if (parkResult.length === 0) return res.status(404).json({ success: false, message: 'Park not found' });
+
+      const parkID = parkResult[0].ParkID;
+      const findSpaceQuery = 'SELECT SpaceID FROM space WHERE ParkID = ? AND Available = 0 LIMIT 1';
+      connection.query(findSpaceQuery, [parkID], (err, spaceResult) => {
+          if (err) return res.status(500).json({ success: false, message: 'Database error' });
+
+          if (spaceResult.length === 0) return res.status(404).json({ success: false, message: 'No available spaces' });
+
+          const spaceID = spaceResult[0].SpaceID;
+          const updateSpaceQuery = 'UPDATE space SET Available = 1 WHERE SpaceID = ?';
+          connection.query(updateSpaceQuery, [spaceID], (err, updateResult) => {
+              if (err) return res.status(500).json({ success: false, message: 'Database error' });
+
+              res.json({ success: true, spaceID: spaceID });
+          });
+
+          const UserID = req.session.userid;
+          const updateUserQuery = 'UPDATE space SET UserID = ? WHERE SpaceID = ?';
+          connection.query(updateUserQuery, [UserID, spaceID], (err, updateResult) => {
+              if (err) return res.status(500).json({ success: false, message: 'Database error' });
+          });
+
+      });
+  });
+});
+
+app.post('/get-admin', (req, res) => {
+    return res.json({ isAdmin: req.session.isadmin });
+});
+
+app.post('/get-user', (req, res) => {
+
+    return res.json({ UserID: req.session.userid });
+});
+
+app.post('/get-users', (req, res) => {
+    const allUsers = 'SELECT UserName FROM users';
+    connection.query(allUsers, (err, results) => {
+        if (err) return res.status(500).json({ success: false, message: 'Database error' });
+
+        res.json({ allUsers: results });
+    });
+});
+
+app.get('/spaces', (req, res) => {
+  console.log("workshere")
+  connection.query('SELECT SpaceID, UserID, Available, ParkID FROM space', (error, results) => {
+    if (error) {
+      console.error('Error fetching data:', error.stack);
+      res.status(500).send('Error fetching data');
+      return;
+    }
+    res.json(results);
+  });
+});
+
+// EXAMPLE FUNCTION FOR GLEB
+app.get('/testing', (req, res) => {
+    console.log("UserID = "+req.session.userid);
+    console.log("IsAdmin = "+req.session.isadmin);
 });

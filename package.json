@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/gleb031212/Software-Engineering#readme",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "mysql2": "^3.10.0"
   }
 }

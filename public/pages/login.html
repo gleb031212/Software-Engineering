@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link href="/css/forms.css" rel="stylesheet">
+    <link href="/css/general.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <nav id = "navbar">
+        <div class="navbar-container">
+            <a href="./index" class="navbar-logo"> <img src="images/uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="default-mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu active" >
+                <li class="navbar-item">
+                    <a href="register" class="navbar-link">Register</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="login" class="navbar-link">Login</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id = "navbar-user">
+        <div class="navbar-container">
+            <a href="./index" class="navbar-logo"> <img src="images/uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="user-mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="notify" class="navbar-link">Notify</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav id = "navbar-admin">
+        <div class="navbar-container">
+            <a href="./index" class="navbar-logo"> <img src="images/uea-logo.png" alt="UEA logo" class="logo"></a>
+            <div class="navbar-toggle" id="admin-mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="admin" class="navbar-link">Admin</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="carparks" class="navbar-link">Parking</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="form"> 
+        <div class="form-container">
+            <form class="form" id="loginForm" method="GET" action="/login2">
+                <div class="form-header">
+                    <h1>Login</h1>
+                    <p>Please enter your details below</p>
+                </div>
+                
+                <div class="form-item">
+                    <span class="form-icon material-symbols-outlined">person</span>
+                    <input type="text" id="username" name="username" placeholder="Enter Username" required autofocus><br>
+                </div>
+
+                <div class="form-item">
+                    <span class="form-icon material-symbols-outlined">lock</span>
+                    <input type="password" id="password" name="password" placeholder="Enter Password"><br>
+                </div>
+
+                <button type="submit">Sign In</button>
+            </form>
+            <div id="message"></div>
+        </div>
+    </div>
+    <script src="/client/app.js"></script>
+</body>
+</html>

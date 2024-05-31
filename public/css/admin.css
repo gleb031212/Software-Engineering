@@ -1,0 +1,117 @@
+body{
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+    height: 100vh;
+}
+
+#admin-home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
+.admin-menu-title{
+    text-align: center;
+}
+
+.admin-menu-title h1{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    letter-spacing: 1px;
+}
+
+.admin-menu-title h1 + div {
+    font-size: calc(1rem*.8);
+    opacity: 0.8;
+}
+
+.admin-menu{
+    width: 450px;
+    background: rgba(255 255, 255, .5);
+    padding: 4rem;
+    border-radius: 10px;
+    position: relative;
+}
+
+.admin-menu::before{
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, .15);
+    border-radius: 10px;
+    inset: 0;
+    transform: rotate(-5deg);
+    z-index: -1;
+}
+
+.admin-feature{
+    border-radius: 100px;
+    background: rgba(255 255, 255, .75);
+    margin-top: 20px;
+}
+
+.admin-feature:hover{
+    cursor: pointer;
+    background: rgba(180,41,111,0.5);
+}
+
+.admin-card-text:hover{
+    color: white;
+}
+
+.admin-card-text{
+    text-align: center;
+    letter-spacing: 2px;
+    padding: 1rem;
+}
+
+#MR-popup .popup-content{
+    width: 800px;
+}
+
+#MA-popup .popup-content{
+    width: 800px;
+}
+
+#ML-popup .popup-content{
+    width: 800px;
+}
+
+#UC-popup .popup-content{
+    width: 800px;
+}
+
+#add-btn{
+    padding: 5px;
+    width: 50px;
+}
+
+#spaces-table {
+    border-collapse: collapse;
+}
+
+#spaces-table .red {
+    background-color: red;
+    color: white;
+}
+#spaces-table .white {
+    background-color: white;
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
+
+    button{
+        padding: 0px;
+        height: 30px;
+        width: 50px;
+    }
+    
+}
+
+
+
+
